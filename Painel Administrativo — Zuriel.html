@@ -1,0 +1,2068 @@
+
+<!-- saved from url=(0072)file:///C:/Users/Tati%20Luz/Downloads/painel_zuriel_21-03-2026__10_.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Administrativo — Zuriel</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f5f7;color:#1a1a1a;font-size:14px}
+.topbar{background:#1a2340;color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar h1{font-size:18px;font-weight:600}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.salvo-tag{font-size:11px;background:rgba(255,255,255,0.15);padding:3px 10px;border-radius:20px}
+.data-top{font-size:12px;opacity:.7}
+.nav-sections{background:#fff;border-bottom:1px solid #e2e4e8;padding:0 24px;display:flex;gap:0}
+.nav-btn{padding:12px 20px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:none;color:#6b7280;border-bottom:3px solid transparent}
+.nav-btn:hover{color:#1a2340}
+.nav-btn.ativo{color:#1a2340;border-bottom-color:#1a2340}
+.secao{display:none}.secao.ativa{display:block}
+.container{max-width:1600px;margin:0 auto;padding:20px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.stat{background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #e2e4e8}
+.stat-label{font-size:11px;color:#666;margin-bottom:4px;text-transform:uppercase;letter-spacing:.4px}
+.stat-val{font-size:26px;font-weight:700}
+.stat-val.total{color:#1a2340}.stat-val.pend{color:#b45309}.stat-val.and{color:#1d4ed8}.stat-val.ok{color:#15803d}
+.tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+.tab{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid #d1d5db;white-space:nowrap}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center;justify-content:space-between}
+.toolbar-left{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.toolbar-right{display:flex;gap:8px;align-items:center}
+.btn{padding:7px 14px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid transparent;height:34px;white-space:nowrap}
+.btn-add{background:#1a2340;color:#fff}.btn-add:hover{background:#243060}
+.btn-sec{background:#fff;border-color:#d1d5db;color:#374151}.btn-sec:hover{background:#f9fafb}
+.btn-cat{background:#f0fdf4;border-color:#86efac;color:#15803d}.btn-cat:hover{background:#dcfce7}
+.btn-nova{background:#374151;color:#fff}.btn-nova:hover{background:#1f2937}
+.btn-notas{background:#fdf4ff;border-color:#d8b4fe;color:#7e22ce}.btn-notas:hover{background:#f3e8ff}
+.btn-csv{background:#fee2e2;border-color:#fca5a5;color:#991b1b}.btn-csv:hover{background:#fecaca}
+.btn-salvar-html{background:#fee2e2;border-color:#fca5a5;color:#991b1b}.btn-salvar-html:hover{background:#fecaca}
+.btn-limpar{background:#fef3c7;border-color:#fcd34d;color:#92400e}.btn-limpar:hover{background:#fde68a}
+.btn-reset{background:#fee2e2;border-color:#fca5a5;color:#991b1b}.btn-reset:hover{background:#fecaca}
+.barra-lote{display:none;align-items:center;gap:10px;background:#1a2340;color:#fff;padding:10px 16px;border-radius:8px;margin-bottom:12px;flex-wrap:wrap}
+.barra-lote.visivel{display:flex}
+.barra-lote select{padding:5px 8px;border-radius:5px;border:none;font-size:13px;height:30px}
+.barra-lote button{padding:5px 14px;border-radius:5px;border:none;font-size:13px;cursor:pointer;height:30px;font-weight:500}
+.btn-aplicar{background:#3b82f6;color:#fff}.btn-cancelar-lote{background:rgba(255,255,255,0.15);color:#fff}
+input[type=checkbox]{width:15px;height:15px;cursor:pointer;accent-color:#1a2340}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #e2e4e8;font-size:13px}
+thead{background:#1a2340;color:#fff}
+th{padding:0;vertical-align:middle;position:relative}
+.th-inner{display:flex;align-items:center;justify-content:space-between;padding:11px 12px;cursor:pointer;user-select:none;white-space:nowrap;gap:6px;font-size:12px;font-weight:500}
+.th-inner:hover{background:rgba(255,255,255,0.08)}
+.th-inner.ativo{background:rgba(255,255,255,0.15)}
+.th-inner.filtrado::after{content:'●';font-size:8px;color:#60a5fa;margin-left:2px}
+.sort-icon{font-size:10px;opacity:.6}
+.filter-drop{display:none;position:absolute;top:100%;left:0;min-width:200px;background:#fff;border:1px solid #e2e4e8;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.15);z-index:1000;padding:12px;color:#1a1a1a}
+.filter-drop.open{display:block}
+.filter-drop label{display:block;font-size:11px;color:#6b7280;margin-bottom:4px;font-weight:500}
+.filter-drop input,.filter-drop select{width:100%;padding:7px 9px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;color:#1a1a1a;background:#fff;margin-bottom:8px}
+.filter-drop .drop-btns{display:flex;gap:6px;margin-top:8px}
+.filter-drop .drop-btns button{flex:1;padding:5px;border-radius:5px;border:none;font-size:12px;cursor:pointer;font-weight:500}
+.drop-limpar{background:#f3f4f6;color:#374151}.drop-aplicar{background:#1a2340;color:#fff}
+.filter-sep{font-size:11px;color:#9ca3af;margin:6px 0 4px;text-align:center}
+td{padding:9px 12px;border-bottom:1px solid #f0f1f3;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f8f9ff}
+tr.selecionada td{background:#eff6ff!important}
+tr.drag-over td{border-top:2px solid #1a2340}
+tr.row-fim td{opacity:.6}
+.badge{display:inline-block;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:600;white-space:nowrap}
+.s-pendente{background:#fef3c7;color:#92400e}.s-andamento{background:#dbeafe;color:#1e40af}
+.s-concluido{background:#d1fae5;color:#065f46}.s-cancelado{background:#f3f4f6;color:#6b7280}
+.p-alta{background:#fee2e2;color:#991b1b}.p-media{background:#ffedd5;color:#9a3412}.p-baixa{background:#d1fae5;color:#065f46}
+.data-cel{font-size:11px;color:#6b7280;white-space:nowrap}
+.data-conclusao{font-size:11px;color:#065f46;white-space:nowrap;font-weight:500}
+.acoes button{background:none;border:none;cursor:pointer;padding:2px 5px;border-radius:4px;font-size:14px;color:#6b7280}
+.acoes button:hover{background:#f3f4f6;color:#111}
+.acoes button.del:hover{color:#dc2626}
+.empty{text-align:center;padding:32px;color:#9ca3af}
+/* FINANCEIRO */
+.fin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.fin-stat{background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #e2e4e8}
+.fin-stat-label{font-size:11px;color:#666;margin-bottom:4px;text-transform:uppercase;letter-spacing:.4px}
+.fin-stat-val{font-size:22px;font-weight:700}
+.alerta-banner{background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:12px 16px;margin-bottom:16px;display:none}
+.alerta-banner.visivel{display:block}
+.alerta-banner h3{font-size:13px;font-weight:600;color:#92400e;margin-bottom:6px}
+.alerta-item{font-size:12px;color:#92400e;padding:2px 0}
+.fin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+table.fin-table thead{background:#7c3aed}
+.f-pago{background:#d1fae5;color:#065f46}
+.f-pendente{background:#fef3c7;color:#92400e}
+.f-vencido{background:#fee2e2;color:#991b1b}
+tr.fin-vencido td{background:#fff5f5}
+tr.fin-alerta td{background:#fffbeb}
+/* NOTAS */
+.notas-overlay{display:none}
+.notas-modal{background:#fff;border-radius:12px;width:640px;max-width:95vw;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,.2);overflow:hidden}
+.notas-header{background:#1a2340;color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.notas-header h2{font-size:15px;font-weight:600}
+.notas-header button{background:none;border:none;color:#fff;font-size:18px;cursor:pointer;opacity:.7}
+.notas-tabs{display:flex;gap:4px;border-bottom:1px solid #e2e4e8;background:#f9fafb;padding:8px 10px 0;overflow-x:auto;min-height:42px;align-items:flex-end}
+.nota-tab{display:flex;align-items:center;gap:4px;padding:6px 10px;border-radius:6px 6px 0 0;font-size:12px;font-weight:500;cursor:pointer;border:1px solid transparent;border-bottom:none;color:#6b7280;background:transparent;white-space:nowrap}
+.nota-tab.ativo{background:#fff;border-color:#e2e4e8;color:#1a2340;margin-bottom:-1px}
+.nota-tab-nome{outline:none;border:none;background:transparent;font-size:12px;font-weight:500;color:inherit;width:auto;max-width:120px;min-width:40px}
+.nota-tab-nome[readonly]{cursor:pointer}
+.nota-tab-nome:not([readonly]){cursor:text;border-bottom:1px solid #a5b4fc}
+.nota-tab-del{font-size:10px;opacity:.4;cursor:pointer;padding:1px 3px;border-radius:3px;line-height:1}
+.nota-tab-del:hover{opacity:1;background:#fee2e2;color:#dc2626}
+.nota-tab-add{padding:4px 10px;font-size:18px;cursor:pointer;color:#9ca3af;background:none;border:none;line-height:1;margin-bottom:2px}
+.nota-tab-add:hover{color:#1a2340}
+.notas-body{flex:1;display:flex;flex-direction:column;padding:14px}
+.notas-body textarea{flex:1;width:100%;min-height:300px;border:1px solid #e2e4e8;border-radius:8px;padding:12px;font-size:13px;font-family:Arial,sans-serif;resize:none;color:#1a1a1a;line-height:1.6}
+.notas-body textarea:focus{outline:none;border-color:#a5b4fc}
+.notas-footer{display:flex;align-items:center;padding:10px 14px;border-top:1px solid #f0f1f3;background:#f9fafb;gap:8px}
+.notas-footer span{font-size:11px;color:#9ca3af;flex:1}
+/* MODAIS */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:2000;align-items:center;justify-content:center}
+.overlay.open{display:flex}
+.modal{background:#fff;border-radius:10px;padding:24px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.18)}
+.modal-sm{max-width:380px}
+.modal h2{font-size:16px;font-weight:600;margin-bottom:16px;color:#1a2340}
+.campo{margin-bottom:12px}
+.campo label{display:block;font-size:12px;color:#6b7280;margin-bottom:4px;font-weight:500}
+.campo input,.campo select,.campo textarea{width:100%;padding:8px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;color:#1a1a1a;background:#fff}
+.campo textarea{height:80px;resize:vertical}
+.modal-btns{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+.linha-alarme{display:flex;align-items:center;gap:8px}
+.linha-alarme input{width:70px}
+@media(max-width:900px){.stats,.fin-stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script id="__ds__">(function(){try{localStorage.setItem("zuriel_demandas","[{\"id\":1,\"demanda\":\"LISTA DE LEADS\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"LISTA DE LEAD - SEGMENTADO AREA DE INDÚSTRIA  AGRONEGOCIO\",\"entrada\":\"20/03/2026\",\"conclusao\":\"\"},{\"id\":2,\"demanda\":\"lixeiro, cafeteira, xicaras, tirar uma cadeira\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"20/03/2026\",\"conclusao\":\"\"},{\"id\":3,\"demanda\":\"PROPOSTA SDR - ISA\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Concluído\",\"obs\":\"1. AUMENTAR O FIXO 2. REGISTRO 3. QUANDO ELA COMEÇA A LIGAR\",\"entrada\":\"20/03/2026\",\"conclusao\":\"20/03/2026\"},{\"id\":4,\"demanda\":\"ENVIAR CONTRATO BRAVA\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"1. Primeiro pagamento cobrado somente daqui 15 dias. 2. DEFINIR O DIA PAGAMENTO: DIA 5 OU DIA 25\",\"entrada\":\"20/03/2026\",\"conclusao\":\"\"},{\"id\":5,\"demanda\":\"CADASTRO - PONTTOONLINE\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"R$ 216,56 incluso suporte e aplicativo\",\"entrada\":\"20/03/2026\",\"conclusao\":\"\"},{\"id\":6,\"demanda\":\"CATHO - filtrar vagas: gerente, analistas e advogados\",\"resp\":\"Paula\",\"cat\":\"Equipe\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"20/03/2026\",\"conclusao\":\"\"},{\"id\":7,\"demanda\":\"CADASTRO - SERASA XPERIAN\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"Serasa Xperien: 120 ou 240 mensal, cartão?\",\"entrada\":\"20/03/2026\",\"conclusao\":\"\"},{\"id\":8,\"demanda\":\"CADASTRO - OMIE\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"Omie: cadastro, esperando contato, verificar upgrade qual valor\",\"entrada\":\"20/03/2026\",\"conclusao\":\"\"},{\"id\":9,\"demanda\":\"CADASTRO - VADU\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"nao aceita gmail, nao tem whats, ligar (11) 3198-1857\",\"entrada\":\"20/03/2026\",\"conclusao\":\"\"},{\"id\":10,\"demanda\":\"CADASTRO - RD STATION\",\"resp\":\"Tati\",\"cat\":\"CEO - Wagner\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"CRM para comercial: CRM e atendimento, sem ia, 1349, 3 meses com 50%\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":11,\"demanda\":\"COWORKING BRAVA - 10 mil mensal\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Concluído\",\"obs\":\"contrato 1 ano, ficamos de teste a partir de segunda, 15 dias de prazo pro primeiro pagamento\",\"entrada\":\"19/03/2026\",\"conclusao\":\"20/03/2026\"},{\"id\":12,\"demanda\":\"TREINAMENTO DO WAGNER PARA TODA EQUIPE\",\"resp\":\"Tati\",\"cat\":\"CEO - Wagner\",\"prio\":\"Baixa\",\"status\":\"Pendente\",\"obs\":\"SOBRE FUNDOS E SOBRE TODO O PROCESSO DE CRÉDITO\",\"entrada\":\"19/03/2026\",\"conclusao\":\"\"},{\"id\":13,\"demanda\":\"REUNIÃO WAGNER E PAULA\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"19/03/2026\",\"conclusao\":\"\"},{\"id\":14,\"demanda\":\"REUNIÃO EQUIPE COM A KA\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"19/03/2026\",\"conclusao\":\"\"},{\"id\":15,\"demanda\":\"REUNIÃO SDR - ISA\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Alta\",\"status\":\"Concluído\",\"obs\":\"VIDEO CHAMADA\",\"entrada\":\"19/03/2026\",\"conclusao\":\"19/03/2026\"},{\"id\":16,\"demanda\":\"VERIFICAR CONTA DA CATHO\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"KA - VERIFICAR DEBITOS E CANDIDATURA IVA - VAO LIGAR\",\"entrada\":\"19/03/2026\",\"conclusao\":\"\"},{\"id\":17,\"demanda\":\"EXPANDIR VAGAS DE ANALISTAS PARA BC E SP\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Concluído\",\"obs\":\"\",\"entrada\":\"19/03/2026\",\"conclusao\":\"19/03/2026\"},{\"id\":18,\"demanda\":\"EXPANDIR VAGAS E AJUSTAR SALARIO - GERENTE DE RELACIONAMENTO\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Concluído\",\"obs\":\"GERENTE DE RELACIONAMENTO - R$ 4.800 São Paulo, Balneário Camboriú, BH, Porto Alegre, Curitiba, Goiânia, Campo Grande MS\",\"entrada\":\"18/03/2026\",\"conclusao\":\"19/03/2026\"},{\"id\":19,\"demanda\":\"VERIFICAR UBER ALUGUEL\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"18/03/2026\",\"conclusao\":\"\"},{\"id\":20,\"demanda\":\"TERMOS E CODIGOS\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Média\",\"status\":\"Em andamento\",\"obs\":\"1. CODIGO DE ÉTICA - OK 2. TERMO DE CONFIDENCIALIDADE - OK 3. TERMOS DE RESPONSABILIDADE DE DADOS - 4. POLÍTICA DE DADOS LGPD PARA COLABORADORES - 5. POLÍTICA DE PRIVACIDADE PARA CLIENTES\",\"entrada\":\"18/03/2026\",\"conclusao\":\"\"},{\"id\":21,\"demanda\":\"PONTTOONLINE - ligar\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"Plano Completo R$119-R$229/mês. Registro foto/QR/PIN, Geolocalização, Portal colaborador, Assinatura eletrônica, Relatórios avançados, Suporte WhatsApp/telefone\",\"entrada\":\"18/03/2026\",\"conclusao\":\"\"},{\"id\":22,\"demanda\":\"Avaliar curriculos e filtrar\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Concluído\",\"obs\":\"1. ANALISTA DE RISCO, CONTABIL E FINACEIRO 2. ECONOMISTA, ADVOGADO EMPRESARIAL, TRIBUTARISTA, GERENTE DE RELACIONAMENTO.\",\"entrada\":\"18/03/2026\",\"conclusao\":\"18/03/2026\"},{\"id\":23,\"demanda\":\"VISITA COWORKING DESMARCAR\",\"resp\":\"Tati\",\"cat\":\"CEO - Wagner\",\"prio\":\"Alta\",\"status\":\"Cancelado\",\"obs\":\"Verificar contrato\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":24,\"demanda\":\"ClickSign — fazer cadastro\",\"resp\":\"Tati\",\"cat\":\"CEO - Wagner\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"Cadastro feito, precisa contratar o plano\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":25,\"demanda\":\"Exames admissionais — QUANTOS funcionários?\",\"resp\":\"Tati\",\"cat\":\"CEO - Wagner\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"Edimed | Alvin Bauer 47 9640-0053 | Cliomed — custo e prazo dos laudos\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":26,\"demanda\":\"Fluxograma da empresa\",\"resp\":\"Tati\",\"cat\":\"CEO - Wagner\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"Por hierarquia, ou por ordem de setor?\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":27,\"demanda\":\"SDR - Isa agendar vídeo\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"Salário R$2.800 + R$250 por agendamento de visita\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":28,\"demanda\":\"Vaga SDR\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"Publicada OK\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":29,\"demanda\":\"Vaga Heads Comerciais — publicar e selecionar\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"OK\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":30,\"demanda\":\"Sala café - REMARCAR COM DANI\",\"resp\":\"Tati\",\"cat\":\"CEO - Wagner\",\"prio\":\"Média\",\"status\":\"Cancelado\",\"obs\":\"REAGENDAR?\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":31,\"demanda\":\"VISITA Sala Rafael — R$8.500\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Concluído\",\"obs\":\"Rafael OK\",\"entrada\":\"17/03/2026\",\"conclusao\":\"17/03/2026\"},{\"id\":32,\"demanda\":\"Vaga Gerente de Relacionamento — 2 vagas separadas\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"2 vagas OK\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":33,\"demanda\":\"Vaga Economista\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"Híbrido — SP/Recife/BC\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":34,\"demanda\":\"Vaga Advogado Empresarial\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"Híbrido — SP/Recife/BC\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":35,\"demanda\":\"Vaga Tributarista\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"Híbrido — SP/Recife/BC\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":36,\"demanda\":\"Paula — pedir documentação e ver sala\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"Sala de reunião ao lado do V8, Riviera, térreo\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":37,\"demanda\":\"Finalizar políticas e normas internas\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":38,\"demanda\":\"Material de escritório — levantar e comprar\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Baixa\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":39,\"demanda\":\"Rômulo Contador — contato e alinhamento\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":40,\"demanda\":\"Verificar salário Gerente de Relacionamento com Wagner\",\"resp\":\"Wagner\",\"cat\":\"CEO - Wagner\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"Faixa: R$4.000 a R$12.000\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":41,\"demanda\":\"Falar com advogado\",\"resp\":\"Wagner\",\"cat\":\"CEO - Wagner\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"Segunda-feira\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":42,\"demanda\":\"Mensagens de WhatsApp — estruturar templates\",\"resp\":\"Tati\",\"cat\":\"CEO - Wagner\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"Verificar com Wagner\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":43,\"demanda\":\"CONTRATADA - Vaga Assistente de Diretoria — presencial BC\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Alta\",\"status\":\"Concluído\",\"obs\":\"Contratada Paula\",\"entrada\":\"17/03/2026\",\"conclusao\":\"17/03/2026\"},{\"id\":44,\"demanda\":\"Vaga Analista de Risco — híbrido BC\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Média\",\"status\":\"Em andamento\",\"obs\":\"Híbrido — BC\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":45,\"demanda\":\"Vaga Analista Contábil — híbrido BC\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Alta\",\"status\":\"Em andamento\",\"obs\":\"Híbrido — BC\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":46,\"demanda\":\"Vaga Analista Financeiro — BC/SP\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Média\",\"status\":\"Em andamento\",\"obs\":\"BC/SP — OK\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":47,\"demanda\":\"TERMOS E Código de Ética — elaborar e preparar para assinatura\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":48,\"demanda\":\"ALU — 4 notebooks para equipe\",\"resp\":\"Paula\",\"cat\":\"Equipe\",\"prio\":\"Alta\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":49,\"demanda\":\"Marcos Aloisi — plano Unimed, quantos colaboradores?\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"Será novo plano\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":50,\"demanda\":\"Taxa de transfer Carlo Uber — verificar\",\"resp\":\"Paula\",\"cat\":\"Equipe\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":51,\"demanda\":\"Criar Google Drive para todos os arquivos da empresa\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Alta\",\"status\":\"Concluído\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"17/03/2026\"},{\"id\":52,\"demanda\":\"Flash Benefícios — cadastrar colaboradores\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"Avaliar plataforma alternativa\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":53,\"demanda\":\"Verificar locação de notebook e celular\",\"resp\":\"Paula\",\"cat\":\"Equipe\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":54,\"demanda\":\"Curso de IA para ADM\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Baixa\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":55,\"demanda\":\"Gravador para reuniões e processos internos\",\"resp\":\"Tati\",\"cat\":\"Administrativo\",\"prio\":\"Baixa\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":56,\"demanda\":\"Uniforme — camisetas polo para Heads Comerciais\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Baixa\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":57,\"demanda\":\"Assessoria jurídica contábil — elaborar contratos\",\"resp\":\"Jurídico\",\"cat\":\"Equipe\",\"prio\":\"Baixa\",\"status\":\"Pendente\",\"obs\":\"Contato: advogado da ONI\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"},{\"id\":58,\"demanda\":\"Meta de crescimento administrativo — quinzenal\",\"resp\":\"Tati\",\"cat\":\"RH / Vagas\",\"prio\":\"Média\",\"status\":\"Pendente\",\"obs\":\"\",\"entrada\":\"17/03/2026\",\"conclusao\":\"\"}]");localStorage.setItem("zuriel_categorias","[\"RH / Vagas\",\"Administrativo\",\"Equipe\",\"CEO - Wagner\"]");localStorage.setItem("zuriel_nextid","301");var _ns=localStorage.getItem("zuriel_notas");var _nt=false;if(_ns){try{var _na=JSON.parse(_ns);_nt=_na.some(function(x){return x.texto&&x.texto.trim().length>0;});}catch(e){}}if(!_nt){localStorage.setItem("zuriel_notas","[{\"titulo\":\"Nota 1\",\"texto\":\"\"},{\"titulo\":\"Nova nota 2\",\"texto\":\"testetetetet\"},{\"titulo\":\"Nova nota 3\",\"texto\":\"tetetetetete\"}]");}localStorage.setItem("zuriel_financeiro","{\"contas\":[{\"id\":100,\"descricao\":\"Aluguel Sala\",\"valor\":10000,\"vencimento\":\"2026-04-05\",\"diasAlerta\":3,\"categoria\":\"Aluguel\",\"status\":\"Pendente\",\"recorrencia\":\"mensal\",\"obs\":\"\"},{\"id\":1,\"descricao\":\"Catho - conta da Karina\",\"valor\":275,\"vencimento\":\"2026-04-08\",\"diasAlerta\":3,\"categoria\":\"Sistemas\",\"status\":\"Pendente\",\"recorrencia\":\"mensal\",\"totalParcelas\":12,\"parcelaAtual\":1,\"obs\":\"\"}],\"diasAlarme\":3,\"nextId\":1}");}catch(e){}})();</script></head>
+<body>
+<div class="topbar">
+  <h1>📋 Painel Administrativo — Zuriel</h1>
+  <div class="topbar-right">
+    <span id="salvoTag" class="salvo-tag">&amp;#10003; Salvo</span>
+    <span class="data-top" id="dataAtual">sábado, 21 de março de 2026</span>
+  </div>
+</div>
+<div class="nav-sections">
+  <button class="nav-btn ativo" id="nav-demandas" onclick="trocarSecao(&#39;demandas&#39;)">📋 Demandas</button>
+  <button class="nav-btn" id="nav-financeiro" onclick="trocarSecao(&#39;financeiro&#39;)">💰 Financeiro</button>
+  <button class="nav-btn" id="nav-finpessoal" onclick="trocarSecao(&#39;finpessoal&#39;)">🏠 Financeiro Pessoal</button>
+  <button class="nav-btn" id="nav-notas" onclick="trocarSecao(&#39;notas&#39;)">📝 Notas</button>
+</div>
+
+<!-- DEMANDAS -->
+<div class="secao ativa" id="secao-demandas">
+<div class="container">
+  <div class="stats" id="stats"><div class="stat"><div class="stat-label">Total</div><div class="stat-val total">58</div></div><div class="stat"><div class="stat-label">Pendentes</div><div class="stat-val pend">32</div></div><div class="stat"><div class="stat-label">Em andamento</div><div class="stat-val and">15</div></div><div class="stat"><div class="stat-label">Concluídas</div><div class="stat-val ok">9</div></div><div class="stat"><div class="stat-label">Categorias</div><div class="stat-val total">4</div></div></div>
+  <div id="barraLote" class="barra-lote">
+    <span id="lblSelecionadas">0 selecionadas</span><span style="opacity:.4">|</span>
+    <label style="font-size:13px">Alterar:</label>
+    <select id="loteCampo"><option value="">— campo —</option><option value="cat">Categoria</option><option value="status">Status</option><option value="prio">Prioridade</option><option value="resp">Responsável</option></select>
+    <select id="loteValorSelect" style="display:none"></select>
+    <input id="loteValorInput" style="display:none;padding:5px 8px;border-radius:5px;border:none;font-size:13px;height:30px" placeholder="Digite...">
+    <button class="btn-aplicar" onclick="aplicarLote()">Aplicar</button>
+    <button class="btn-cancelar-lote" onclick="cancelarLote()">Cancelar</button>
+  </div>
+  <!-- Linha 1: só Nova categoria -->
+  <div style="margin-bottom:8px">
+    <button class="btn btn-cat" onclick="abrirModalCat()">＋ Nova categoria</button>
+  </div>
+  <!-- Linha 2: tabs | nova demanda (centro) | botões utilitários -->
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:16px;gap:8px">
+    <div style="display:flex;gap:4px;flex-wrap:wrap;align-items:center">
+      <div class="tabs" id="tabs" style="display:inline-flex;gap:4px;flex-wrap:wrap;margin:0"><button class="tab" style="background:#1a2340;color:#fff;border-color:#1a2340" onclick="filtrarCatTab(&#39;&#39;)">Todas</button><button class="tab" style="background:#ede9fe;color:#5b21b6;border-color:#5b21b6;display:inline-flex;align-items:center" onclick="filtrarCatTab(&#39;RH / Vagas&#39;)">RH / Vagas<span style="margin-left:6px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();editarCat(&#39;RH / Vagas&#39;)">✎</span><span style="margin-left:3px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();excluirCat(&#39;RH / Vagas&#39;)">×</span></button><button class="tab" style="background:#e0f2fe;color:#0369a1;border-color:#0369a1;display:inline-flex;align-items:center" onclick="filtrarCatTab(&#39;Administrativo&#39;)">Administrativo</button><button class="tab" style="background:#fce7f3;color:#9d174d;border-color:#9d174d;display:inline-flex;align-items:center" onclick="filtrarCatTab(&#39;Equipe&#39;)">Equipe<span style="margin-left:6px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();editarCat(&#39;Equipe&#39;)">✎</span><span style="margin-left:3px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();excluirCat(&#39;Equipe&#39;)">×</span></button><button class="tab" style="background:#ecfccb;color:#3f6212;border-color:#3f6212;display:inline-flex;align-items:center" onclick="filtrarCatTab(&#39;CEO - Wagner&#39;)">CEO - Wagner<span style="margin-left:6px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();editarCat(&#39;CEO - Wagner&#39;)">✎</span><span style="margin-left:3px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();excluirCat(&#39;CEO - Wagner&#39;)">×</span></button></div>
+      <button class="btn btn-limpar" id="btnLimpar" onclick="limparFiltros()" style="display:none;height:28px;font-size:11px;padding:3px 8px">✕ Limpar</button>
+    </div>
+    <button class="btn btn-nova" onclick="abrirModal()" style="font-size:15px;font-weight:600;height:46px;padding:0 40px;border-radius:8px;white-space:nowrap">＋ Nova demanda</button>
+    <div style="display:flex;gap:6px;align-items:center;justify-content:flex-end">
+      <button class="btn btn-csv" onclick="exportarCSV()" style="height:28px;font-size:11px;padding:3px 10px">⬇ Exportar</button>
+      <button class="btn btn-salvar-html" onclick="salvarHTML()" style="height:28px;font-size:11px;padding:3px 10px">💾 Salvar</button>
+      <button class="btn btn-reset" onclick="resetarDados()" style="height:28px;font-size:11px;padding:3px 10px">↺ Resetar</button>
+    </div>
+  </div>
+  <div style="overflow-x:auto"><table>
+    <thead><tr>
+      <th style="width:36px"><div class="th-inner" style="cursor:default;justify-content:center"><input type="checkbox" id="chkTodos" onclick="toggleTodos(this)"></div></th>
+      <th style="width:28px"><div class="th-inner" style="cursor:default"></div></th>
+      <th style="width:40px"><div class="th-inner" onclick="ordenarPor(&#39;idx&#39;)"># <span class="sort-icon" id="si-idx"></span></div></th>
+      <th style="min-width:200px">
+        <div class="th-inner" id="th-demanda" onclick="toggleDrop(&#39;demanda&#39;)">Demanda <span class="sort-icon" id="si-demanda"></span></div>
+        <div class="filter-drop" id="drop-demanda"><label>Buscar na demanda</label><input type="text" id="fd-demanda" placeholder="Digite..." oninput="aplicarFiltroInline()"><div class="drop-btns"><button class="drop-limpar" onclick="limparDrop(&#39;demanda&#39;)">Limpar</button><button class="drop-aplicar" onclick="fecharDrop(&#39;demanda&#39;)">OK</button></div></div>
+      </th>
+      <th><div class="th-inner" id="th-resp" onclick="toggleDrop(&#39;resp&#39;)">Responsável <span class="sort-icon" id="si-resp"></span></div>
+        <div class="filter-drop" id="drop-resp"><label>Responsável</label><select id="fd-resp" onchange="aplicarFiltroInline()"><option value="">Todos</option><option>Jurídico</option><option>Paula</option><option>Tati</option><option>Wagner</option></select><div class="drop-btns"><button class="drop-limpar" onclick="limparDrop(&#39;resp&#39;)">Limpar</button><button class="drop-aplicar" onclick="fecharDrop(&#39;resp&#39;)">OK</button></div></div>
+      </th>
+      <th><div class="th-inner" id="th-cat" onclick="toggleDrop(&#39;cat&#39;)">Categoria <span class="sort-icon" id="si-cat"></span></div>
+        <div class="filter-drop" id="drop-cat"><label>Categoria</label><select id="fd-cat" onchange="filtrarCatSelect()"><option value="">Todas</option><option>RH / Vagas</option><option>Administrativo</option><option>Equipe</option><option>CEO - Wagner</option></select><div class="drop-btns"><button class="drop-limpar" onclick="limparDrop(&#39;cat&#39;)">Limpar</button><button class="drop-aplicar" onclick="fecharDrop(&#39;cat&#39;)">OK</button></div></div>
+      </th>
+      <th><div class="th-inner" id="th-prio" onclick="toggleDrop(&#39;prio&#39;)">Prioridade <span class="sort-icon" id="si-prio"></span></div>
+        <div class="filter-drop" id="drop-prio"><label>Prioridade</label><select id="fd-prio" onchange="aplicarFiltroInline()"><option value="">Todas</option><option>Alta</option><option>Média</option><option>Baixa</option></select><div class="drop-btns"><button class="drop-limpar" onclick="limparDrop(&#39;prio&#39;)">Limpar</button><button class="drop-aplicar" onclick="fecharDrop(&#39;prio&#39;)">OK</button></div></div>
+      </th>
+      <th><div class="th-inner" id="th-status" onclick="toggleDrop(&#39;status&#39;)">Status <span class="sort-icon" id="si-status"></span></div>
+        <div class="filter-drop" id="drop-status"><label>Status</label><select id="fd-status" onchange="aplicarFiltroInline()"><option value="">Todos</option><option>Pendente</option><option>Em andamento</option><option>Concluído</option><option>Cancelado</option></select><div class="drop-btns"><button class="drop-limpar" onclick="limparDrop(&#39;status&#39;)">Limpar</button><button class="drop-aplicar" onclick="fecharDrop(&#39;status&#39;)">OK</button></div></div>
+      </th>
+      <th><div class="th-inner" id="th-entrada" onclick="toggleDrop(&#39;entrada&#39;)">Entrada <span class="sort-icon" id="si-entrada"></span></div>
+        <div class="filter-drop" id="drop-entrada" style="min-width:220px"><label>De</label><input type="date" id="fd-entrada-de" oninput="aplicarFiltroInline()"><div class="filter-sep">até</div><input type="date" id="fd-entrada-ate" oninput="aplicarFiltroInline()"><div class="drop-btns"><button class="drop-limpar" onclick="limparDrop(&#39;entrada&#39;)">Limpar</button><button class="drop-aplicar" onclick="fecharDrop(&#39;entrada&#39;)">OK</button></div></div>
+      </th>
+      <th><div class="th-inner" id="th-conclusao" onclick="toggleDrop(&#39;conclusao&#39;)">Conclusão <span class="sort-icon" id="si-conclusao"></span></div>
+        <div class="filter-drop" id="drop-conclusao" style="min-width:220px"><label>De</label><input type="date" id="fd-conclusao-de" oninput="aplicarFiltroInline()"><div class="filter-sep">até</div><input type="date" id="fd-conclusao-ate" oninput="aplicarFiltroInline()"><div class="drop-btns"><button class="drop-limpar" onclick="limparDrop(&#39;conclusao&#39;)">Limpar</button><button class="drop-aplicar" onclick="fecharDrop(&#39;conclusao&#39;)">OK</button></div></div>
+      </th>
+      <th><div class="th-inner" id="th-prazo" onclick="toggleDrop(&#39;prazo&#39;)">⏰ Prazo <span class="sort-icon" id="si-prazo"></span></div>
+        <div class="filter-drop" id="drop-prazo" style="min-width:220px"><label>De</label><input type="date" id="fd-prazo-de" oninput="aplicarFiltroInline()"><div class="filter-sep">até</div><input type="date" id="fd-prazo-ate" oninput="aplicarFiltroInline()"><div class="drop-btns"><button class="drop-limpar" onclick="limparDrop(&#39;prazo&#39;)">Limpar</button><button class="drop-aplicar" onclick="fecharDrop(&#39;prazo&#39;)">OK</button></div></div>
+      </th>
+      <th style="min-width:180px"><div class="th-inner" id="th-obs" onclick="toggleDrop(&#39;obs&#39;)">Observações <span class="sort-icon" id="si-obs"></span></div>
+        <div class="filter-drop" id="drop-obs"><label>Buscar nas observações</label><input type="text" id="fd-obs" placeholder="Digite..." oninput="aplicarFiltroInline()"><div class="drop-btns"><button class="drop-limpar" onclick="limparDrop(&#39;obs&#39;)">Limpar</button><button class="drop-aplicar" onclick="fecharDrop(&#39;obs&#39;)">OK</button></div></div>
+      </th>
+      <th style="width:70px"><div class="th-inner" style="cursor:default"></div></th>
+    </tr></thead>
+    <tbody id="tbody"><tr draggable="true" data-id="1" ondblclick="editar(1)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(1,this)" data-id="1"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">1</td>
+      <td style="max-width:220px;font-weight:500">LISTA DE LEADS</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">20/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">LISTA DE LEAD - SEGMENTADO AREA DE INDÚSTRIA  AGRONEGOCIO</td>
+      <td><div class="acoes"><button onclick="editar(1)" title="Editar">✏️</button><button class="del" onclick="excluir(1)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="2" ondblclick="editar(2)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(2,this)" data-id="2"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">2</td>
+      <td style="max-width:220px;font-weight:500">lixeiro, cafeteira, xicaras, tirar uma cadeira</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">20/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(2)" title="Editar">✏️</button><button class="del" onclick="excluir(2)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="4" ondblclick="editar(4)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(4,this)" data-id="4"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">3</td>
+      <td style="max-width:220px;font-weight:500">ENVIAR CONTRATO BRAVA</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">20/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">1. Primeiro pagamento cobrado somente daqui 15 dias. 2. DEFINIR O DIA PAGAMENTO: DIA 5 OU DIA 25</td>
+      <td><div class="acoes"><button onclick="editar(4)" title="Editar">✏️</button><button class="del" onclick="excluir(4)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="5" ondblclick="editar(5)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(5,this)" data-id="5"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">4</td>
+      <td style="max-width:220px;font-weight:500">CADASTRO - PONTTOONLINE</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">20/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">R$ 216,56 incluso suporte e aplicativo</td>
+      <td><div class="acoes"><button onclick="editar(5)" title="Editar">✏️</button><button class="del" onclick="excluir(5)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="6" ondblclick="editar(6)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(6,this)" data-id="6"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">5</td>
+      <td style="max-width:220px;font-weight:500">CATHO - filtrar vagas: gerente, analistas e advogados</td>
+      <td style="white-space:nowrap">Paula</td>
+      <td><span class="badge" style="background:#fce7f3;color:#9d174d">Equipe</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">20/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(6)" title="Editar">✏️</button><button class="del" onclick="excluir(6)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="7" ondblclick="editar(7)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(7,this)" data-id="7"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">6</td>
+      <td style="max-width:220px;font-weight:500">CADASTRO - SERASA XPERIAN</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">20/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Serasa Xperien: 120 ou 240 mensal, cartão?</td>
+      <td><div class="acoes"><button onclick="editar(7)" title="Editar">✏️</button><button class="del" onclick="excluir(7)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="8" ondblclick="editar(8)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(8,this)" data-id="8"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">7</td>
+      <td style="max-width:220px;font-weight:500">CADASTRO - OMIE</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">20/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Omie: cadastro, esperando contato, verificar upgrade qual valor</td>
+      <td><div class="acoes"><button onclick="editar(8)" title="Editar">✏️</button><button class="del" onclick="excluir(8)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="9" ondblclick="editar(9)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(9,this)" data-id="9"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">8</td>
+      <td style="max-width:220px;font-weight:500">CADASTRO - VADU</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">20/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">nao aceita gmail, nao tem whats, ligar (11) 3198-1857</td>
+      <td><div class="acoes"><button onclick="editar(9)" title="Editar">✏️</button><button class="del" onclick="excluir(9)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="10" ondblclick="editar(10)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(10,this)" data-id="10"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">9</td>
+      <td style="max-width:220px;font-weight:500">CADASTRO - RD STATION</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">CRM para comercial: CRM e atendimento, sem ia, 1349, 3 meses com 50%</td>
+      <td><div class="acoes"><button onclick="editar(10)" title="Editar">✏️</button><button class="del" onclick="excluir(10)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="16" ondblclick="editar(16)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(16,this)" data-id="16"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">10</td>
+      <td style="max-width:220px;font-weight:500">VERIFICAR CONTA DA CATHO</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">19/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">KA - VERIFICAR DEBITOS E CANDIDATURA IVA - VAO LIGAR</td>
+      <td><div class="acoes"><button onclick="editar(16)" title="Editar">✏️</button><button class="del" onclick="excluir(16)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="21" ondblclick="editar(21)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(21,this)" data-id="21"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">11</td>
+      <td style="max-width:220px;font-weight:500">PONTTOONLINE - ligar</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">18/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Plano Completo R$119-R$229/mês. Registro foto/QR/PIN, Geolocalização, Portal colaborador, Assinatura eletrônica, Relatórios avançados, Suporte WhatsApp/telefone</td>
+      <td><div class="acoes"><button onclick="editar(21)" title="Editar">✏️</button><button class="del" onclick="excluir(21)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="24" ondblclick="editar(24)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(24,this)" data-id="24"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">12</td>
+      <td style="max-width:220px;font-weight:500">ClickSign — fazer cadastro</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Cadastro feito, precisa contratar o plano</td>
+      <td><div class="acoes"><button onclick="editar(24)" title="Editar">✏️</button><button class="del" onclick="excluir(24)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="25" ondblclick="editar(25)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(25,this)" data-id="25"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">13</td>
+      <td style="max-width:220px;font-weight:500">Exames admissionais — QUANTOS funcionários?</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Edimed | Alvin Bauer 47 9640-0053 | Cliomed — custo e prazo dos laudos</td>
+      <td><div class="acoes"><button onclick="editar(25)" title="Editar">✏️</button><button class="del" onclick="excluir(25)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="26" ondblclick="editar(26)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(26,this)" data-id="26"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">14</td>
+      <td style="max-width:220px;font-weight:500">Fluxograma da empresa</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Por hierarquia, ou por ordem de setor?</td>
+      <td><div class="acoes"><button onclick="editar(26)" title="Editar">✏️</button><button class="del" onclick="excluir(26)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="27" ondblclick="editar(27)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(27,this)" data-id="27"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">15</td>
+      <td style="max-width:220px;font-weight:500">SDR - Isa agendar vídeo</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Salário R$2.800 + R$250 por agendamento de visita</td>
+      <td><div class="acoes"><button onclick="editar(27)" title="Editar">✏️</button><button class="del" onclick="excluir(27)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="28" ondblclick="editar(28)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(28,this)" data-id="28"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">16</td>
+      <td style="max-width:220px;font-weight:500">Vaga SDR</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Publicada OK</td>
+      <td><div class="acoes"><button onclick="editar(28)" title="Editar">✏️</button><button class="del" onclick="excluir(28)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="32" ondblclick="editar(32)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(32,this)" data-id="32"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">17</td>
+      <td style="max-width:220px;font-weight:500">Vaga Gerente de Relacionamento — 2 vagas separadas</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">2 vagas OK</td>
+      <td><div class="acoes"><button onclick="editar(32)" title="Editar">✏️</button><button class="del" onclick="excluir(32)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="33" ondblclick="editar(33)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(33,this)" data-id="33"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">18</td>
+      <td style="max-width:220px;font-weight:500">Vaga Economista</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Híbrido — SP/Recife/BC</td>
+      <td><div class="acoes"><button onclick="editar(33)" title="Editar">✏️</button><button class="del" onclick="excluir(33)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="34" ondblclick="editar(34)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(34,this)" data-id="34"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">19</td>
+      <td style="max-width:220px;font-weight:500">Vaga Advogado Empresarial</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Híbrido — SP/Recife/BC</td>
+      <td><div class="acoes"><button onclick="editar(34)" title="Editar">✏️</button><button class="del" onclick="excluir(34)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="35" ondblclick="editar(35)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(35,this)" data-id="35"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">20</td>
+      <td style="max-width:220px;font-weight:500">Vaga Tributarista</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Híbrido — SP/Recife/BC</td>
+      <td><div class="acoes"><button onclick="editar(35)" title="Editar">✏️</button><button class="del" onclick="excluir(35)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="41" ondblclick="editar(41)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(41,this)" data-id="41"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">21</td>
+      <td style="max-width:220px;font-weight:500">Falar com advogado</td>
+      <td style="white-space:nowrap">Wagner</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Segunda-feira</td>
+      <td><div class="acoes"><button onclick="editar(41)" title="Editar">✏️</button><button class="del" onclick="excluir(41)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="45" ondblclick="editar(45)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(45,this)" data-id="45"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">22</td>
+      <td style="max-width:220px;font-weight:500">Vaga Analista Contábil — híbrido BC</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Híbrido — BC</td>
+      <td><div class="acoes"><button onclick="editar(45)" title="Editar">✏️</button><button class="del" onclick="excluir(45)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="48" ondblclick="editar(48)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(48,this)" data-id="48"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">23</td>
+      <td style="max-width:220px;font-weight:500">ALU — 4 notebooks para equipe</td>
+      <td style="white-space:nowrap">Paula</td>
+      <td><span class="badge" style="background:#fce7f3;color:#9d174d">Equipe</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(48)" title="Editar">✏️</button><button class="del" onclick="excluir(48)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="13" ondblclick="editar(13)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(13,this)" data-id="13"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">24</td>
+      <td style="max-width:220px;font-weight:500">REUNIÃO WAGNER E PAULA</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">19/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(13)" title="Editar">✏️</button><button class="del" onclick="excluir(13)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="14" ondblclick="editar(14)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(14,this)" data-id="14"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">25</td>
+      <td style="max-width:220px;font-weight:500">REUNIÃO EQUIPE COM A KA</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">19/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(14)" title="Editar">✏️</button><button class="del" onclick="excluir(14)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="19" ondblclick="editar(19)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(19,this)" data-id="19"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">26</td>
+      <td style="max-width:220px;font-weight:500">VERIFICAR UBER ALUGUEL</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">18/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(19)" title="Editar">✏️</button><button class="del" onclick="excluir(19)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="20" ondblclick="editar(20)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(20,this)" data-id="20"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">27</td>
+      <td style="max-width:220px;font-weight:500">TERMOS E CODIGOS</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">18/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">1. CODIGO DE ÉTICA - OK 2. TERMO DE CONFIDENCIALIDADE - OK 3. TERMOS DE RESPONSABILIDADE DE DADOS - 4. POLÍTICA DE DADOS LGPD PARA COLABORADORES - 5. POLÍTICA DE PRIVACIDADE PARA CLIENTES</td>
+      <td><div class="acoes"><button onclick="editar(20)" title="Editar">✏️</button><button class="del" onclick="excluir(20)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="29" ondblclick="editar(29)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(29,this)" data-id="29"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">28</td>
+      <td style="max-width:220px;font-weight:500">Vaga Heads Comerciais — publicar e selecionar</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">OK</td>
+      <td><div class="acoes"><button onclick="editar(29)" title="Editar">✏️</button><button class="del" onclick="excluir(29)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="36" ondblclick="editar(36)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(36,this)" data-id="36"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">29</td>
+      <td style="max-width:220px;font-weight:500">Paula — pedir documentação e ver sala</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Sala de reunião ao lado do V8, Riviera, térreo</td>
+      <td><div class="acoes"><button onclick="editar(36)" title="Editar">✏️</button><button class="del" onclick="excluir(36)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="37" ondblclick="editar(37)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(37,this)" data-id="37"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">30</td>
+      <td style="max-width:220px;font-weight:500">Finalizar políticas e normas internas</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(37)" title="Editar">✏️</button><button class="del" onclick="excluir(37)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="39" ondblclick="editar(39)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(39,this)" data-id="39"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">31</td>
+      <td style="max-width:220px;font-weight:500">Rômulo Contador — contato e alinhamento</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(39)" title="Editar">✏️</button><button class="del" onclick="excluir(39)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="40" ondblclick="editar(40)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(40,this)" data-id="40"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">32</td>
+      <td style="max-width:220px;font-weight:500">Verificar salário Gerente de Relacionamento com Wagner</td>
+      <td style="white-space:nowrap">Wagner</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Faixa: R$4.000 a R$12.000</td>
+      <td><div class="acoes"><button onclick="editar(40)" title="Editar">✏️</button><button class="del" onclick="excluir(40)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="42" ondblclick="editar(42)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(42,this)" data-id="42"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">33</td>
+      <td style="max-width:220px;font-weight:500">Mensagens de WhatsApp — estruturar templates</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Verificar com Wagner</td>
+      <td><div class="acoes"><button onclick="editar(42)" title="Editar">✏️</button><button class="del" onclick="excluir(42)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="44" ondblclick="editar(44)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(44,this)" data-id="44"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">34</td>
+      <td style="max-width:220px;font-weight:500">Vaga Analista de Risco — híbrido BC</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Híbrido — BC</td>
+      <td><div class="acoes"><button onclick="editar(44)" title="Editar">✏️</button><button class="del" onclick="excluir(44)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="46" ondblclick="editar(46)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(46,this)" data-id="46"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">35</td>
+      <td style="max-width:220px;font-weight:500">Vaga Analista Financeiro — BC/SP</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-andamento">Em andamento</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">BC/SP — OK</td>
+      <td><div class="acoes"><button onclick="editar(46)" title="Editar">✏️</button><button class="del" onclick="excluir(46)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="47" ondblclick="editar(47)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(47,this)" data-id="47"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">36</td>
+      <td style="max-width:220px;font-weight:500">TERMOS E Código de Ética — elaborar e preparar para assinatura</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(47)" title="Editar">✏️</button><button class="del" onclick="excluir(47)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="49" ondblclick="editar(49)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(49,this)" data-id="49"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">37</td>
+      <td style="max-width:220px;font-weight:500">Marcos Aloisi — plano Unimed, quantos colaboradores?</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Será novo plano</td>
+      <td><div class="acoes"><button onclick="editar(49)" title="Editar">✏️</button><button class="del" onclick="excluir(49)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="50" ondblclick="editar(50)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(50,this)" data-id="50"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">38</td>
+      <td style="max-width:220px;font-weight:500">Taxa de transfer Carlo Uber — verificar</td>
+      <td style="white-space:nowrap">Paula</td>
+      <td><span class="badge" style="background:#fce7f3;color:#9d174d">Equipe</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(50)" title="Editar">✏️</button><button class="del" onclick="excluir(50)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="52" ondblclick="editar(52)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(52,this)" data-id="52"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">39</td>
+      <td style="max-width:220px;font-weight:500">Flash Benefícios — cadastrar colaboradores</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Avaliar plataforma alternativa</td>
+      <td><div class="acoes"><button onclick="editar(52)" title="Editar">✏️</button><button class="del" onclick="excluir(52)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="53" ondblclick="editar(53)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(53,this)" data-id="53"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">40</td>
+      <td style="max-width:220px;font-weight:500">Verificar locação de notebook e celular</td>
+      <td style="white-space:nowrap">Paula</td>
+      <td><span class="badge" style="background:#fce7f3;color:#9d174d">Equipe</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(53)" title="Editar">✏️</button><button class="del" onclick="excluir(53)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="58" ondblclick="editar(58)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(58,this)" data-id="58"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">41</td>
+      <td style="max-width:220px;font-weight:500">Meta de crescimento administrativo — quinzenal</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(58)" title="Editar">✏️</button><button class="del" onclick="excluir(58)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="12" ondblclick="editar(12)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(12,this)" data-id="12"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">42</td>
+      <td style="max-width:220px;font-weight:500">TREINAMENTO DO WAGNER PARA TODA EQUIPE</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-baixa">Baixa</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">19/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">SOBRE FUNDOS E SOBRE TODO O PROCESSO DE CRÉDITO</td>
+      <td><div class="acoes"><button onclick="editar(12)" title="Editar">✏️</button><button class="del" onclick="excluir(12)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="38" ondblclick="editar(38)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(38,this)" data-id="38"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">43</td>
+      <td style="max-width:220px;font-weight:500">Material de escritório — levantar e comprar</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-baixa">Baixa</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(38)" title="Editar">✏️</button><button class="del" onclick="excluir(38)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="54" ondblclick="editar(54)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(54,this)" data-id="54"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">44</td>
+      <td style="max-width:220px;font-weight:500">Curso de IA para ADM</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-baixa">Baixa</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(54)" title="Editar">✏️</button><button class="del" onclick="excluir(54)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="55" ondblclick="editar(55)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(55,this)" data-id="55"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">45</td>
+      <td style="max-width:220px;font-weight:500">Gravador para reuniões e processos internos</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-baixa">Baixa</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(55)" title="Editar">✏️</button><button class="del" onclick="excluir(55)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="56" ondblclick="editar(56)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(56,this)" data-id="56"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">46</td>
+      <td style="max-width:220px;font-weight:500">Uniforme — camisetas polo para Heads Comerciais</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-baixa">Baixa</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(56)" title="Editar">✏️</button><button class="del" onclick="excluir(56)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="57" ondblclick="editar(57)" class="">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(57,this)" data-id="57"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">47</td>
+      <td style="max-width:220px;font-weight:500">Assessoria jurídica contábil — elaborar contratos</td>
+      <td style="white-space:nowrap">Jurídico</td>
+      <td><span class="badge" style="background:#fce7f3;color:#9d174d">Equipe</span></td>
+      <td><span class="badge p-baixa">Baixa</span></td>
+      <td><span class="badge s-pendente">Pendente</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Contato: advogado da ONI</td>
+      <td><div class="acoes"><button onclick="editar(57)" title="Editar">✏️</button><button class="del" onclick="excluir(57)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="3" ondblclick="editar(3)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(3,this)" data-id="3"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">48</td>
+      <td style="max-width:220px;font-weight:500">PROPOSTA SDR - ISA</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-concluido">Concluído</span></td>
+      <td class="data-cel">20/03/2026</td>
+      <td class="data-conclusao">20/03/2026</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">1. AUMENTAR O FIXO 2. REGISTRO 3. QUANDO ELA COMEÇA A LIGAR</td>
+      <td><div class="acoes"><button onclick="editar(3)" title="Editar">✏️</button><button class="del" onclick="excluir(3)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="11" ondblclick="editar(11)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(11,this)" data-id="11"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">49</td>
+      <td style="max-width:220px;font-weight:500">COWORKING BRAVA - 10 mil mensal</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-concluido">Concluído</span></td>
+      <td class="data-cel">19/03/2026</td>
+      <td class="data-conclusao">20/03/2026</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">contrato 1 ano, ficamos de teste a partir de segunda, 15 dias de prazo pro primeiro pagamento</td>
+      <td><div class="acoes"><button onclick="editar(11)" title="Editar">✏️</button><button class="del" onclick="excluir(11)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="15" ondblclick="editar(15)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(15,this)" data-id="15"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">50</td>
+      <td style="max-width:220px;font-weight:500">REUNIÃO SDR - ISA</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-concluido">Concluído</span></td>
+      <td class="data-cel">19/03/2026</td>
+      <td class="data-conclusao">19/03/2026</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">VIDEO CHAMADA</td>
+      <td><div class="acoes"><button onclick="editar(15)" title="Editar">✏️</button><button class="del" onclick="excluir(15)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="17" ondblclick="editar(17)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(17,this)" data-id="17"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">51</td>
+      <td style="max-width:220px;font-weight:500">EXPANDIR VAGAS DE ANALISTAS PARA BC E SP</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-concluido">Concluído</span></td>
+      <td class="data-cel">19/03/2026</td>
+      <td class="data-conclusao">19/03/2026</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(17)" title="Editar">✏️</button><button class="del" onclick="excluir(17)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="18" ondblclick="editar(18)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(18,this)" data-id="18"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">52</td>
+      <td style="max-width:220px;font-weight:500">EXPANDIR VAGAS E AJUSTAR SALARIO - GERENTE DE RELACIONAMENTO</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-concluido">Concluído</span></td>
+      <td class="data-cel">18/03/2026</td>
+      <td class="data-conclusao">19/03/2026</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">GERENTE DE RELACIONAMENTO - R$ 4.800 São Paulo, Balneário Camboriú, BH, Porto Alegre, Curitiba, Goiânia, Campo Grande MS</td>
+      <td><div class="acoes"><button onclick="editar(18)" title="Editar">✏️</button><button class="del" onclick="excluir(18)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="22" ondblclick="editar(22)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(22,this)" data-id="22"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">53</td>
+      <td style="max-width:220px;font-weight:500">Avaliar curriculos e filtrar</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-concluido">Concluído</span></td>
+      <td class="data-cel">18/03/2026</td>
+      <td class="data-conclusao">18/03/2026</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">1. ANALISTA DE RISCO, CONTABIL E FINACEIRO 2. ECONOMISTA, ADVOGADO EMPRESARIAL, TRIBUTARISTA, GERENTE DE RELACIONAMENTO.</td>
+      <td><div class="acoes"><button onclick="editar(22)" title="Editar">✏️</button><button class="del" onclick="excluir(22)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="31" ondblclick="editar(31)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(31,this)" data-id="31"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">54</td>
+      <td style="max-width:220px;font-weight:500">VISITA Sala Rafael — R$8.500</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-concluido">Concluído</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">17/03/2026</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Rafael OK</td>
+      <td><div class="acoes"><button onclick="editar(31)" title="Editar">✏️</button><button class="del" onclick="excluir(31)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="43" ondblclick="editar(43)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(43,this)" data-id="43"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">55</td>
+      <td style="max-width:220px;font-weight:500">CONTRATADA - Vaga Assistente de Diretoria — presencial BC</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ede9fe;color:#5b21b6">RH / Vagas</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-concluido">Concluído</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">17/03/2026</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Contratada Paula</td>
+      <td><div class="acoes"><button onclick="editar(43)" title="Editar">✏️</button><button class="del" onclick="excluir(43)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="51" ondblclick="editar(51)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(51,this)" data-id="51"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">56</td>
+      <td style="max-width:220px;font-weight:500">Criar Google Drive para todos os arquivos da empresa</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#e0f2fe;color:#0369a1">Administrativo</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-concluido">Concluído</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">17/03/2026</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">—</td>
+      <td><div class="acoes"><button onclick="editar(51)" title="Editar">✏️</button><button class="del" onclick="excluir(51)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="23" ondblclick="editar(23)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(23,this)" data-id="23"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">57</td>
+      <td style="max-width:220px;font-weight:500">VISITA COWORKING DESMARCAR</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-alta">Alta</span></td>
+      <td><span class="badge s-cancelado">Cancelado</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">Verificar contrato</td>
+      <td><div class="acoes"><button onclick="editar(23)" title="Editar">✏️</button><button class="del" onclick="excluir(23)" title="Excluir">✕</button></div></td>
+    </tr><tr draggable="true" data-id="30" ondblclick="editar(30)" class=" row-fim">
+      <td style="text-align:center"><input type="checkbox" onclick="toggleSel(30,this)" data-id="30"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">58</td>
+      <td style="max-width:220px;font-weight:500">Sala café - REMARCAR COM DANI</td>
+      <td style="white-space:nowrap">Tati</td>
+      <td><span class="badge" style="background:#ecfccb;color:#3f6212">CEO - Wagner</span></td>
+      <td><span class="badge p-media">Média</span></td>
+      <td><span class="badge s-cancelado">Cancelado</span></td>
+      <td class="data-cel">17/03/2026</td>
+      <td class="data-conclusao">—</td>
+      <td><span style="color:#d1d5db">—</span></td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">REAGENDAR?</td>
+      <td><div class="acoes"><button onclick="editar(30)" title="Editar">✏️</button><button class="del" onclick="excluir(30)" title="Excluir">✕</button></div></td>
+    </tr></tbody>
+  </table></div>
+</div>
+</div>
+
+<!-- FINANCEIRO -->
+<div class="secao" id="secao-financeiro">
+<div class="container">
+  <div id="alerta-banner" class="alerta-banner">
+    <h3>⚠ Atenção — Contas próximas ou vencidas</h3>
+    <div id="alerta-lista"><div class="alerta-item">🟡 <strong>teste<span style="display:inline-block;margin-left:6px;font-size:10px;background:#dbeafe;color:#1e40af;padding:1px 6px;border-radius:10px;font-weight:600">🔄 mensal</span></strong> — R$ 10,00 — vto 25/03/2026 (vence em breve)</div></div>
+  </div>
+  <div class="fin-stats" id="fin-stats">
+    <div class="fin-stat"><div class="fin-stat-label">Total contas</div><div class="fin-stat-val" style="color:#1a2340">2</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">A pagar</div><div class="fin-stat-val" style="color:#b45309">R$ 10.275,00</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">Pagas</div><div class="fin-stat-val" style="color:#15803d">0</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">Vencidas</div><div class="fin-stat-val" style="color:#dc2626">0</div></div></div>
+  <div class="fin-header">
+    <div style="font-size:15px;font-weight:600;color:#1a2340">💰 Contas a Pagar</div>
+    <button class="btn btn-nova" onclick="abrirModalFin()">＋ Nova conta</button>
+  </div>
+  <div style="overflow-x:auto"><table class="fin-table">
+    <thead><tr>
+      <th><div class="th-inner" style="cursor:default">#</div></th>
+      <th><div class="th-inner">Descrição</div></th>
+      <th><div class="th-inner">Valor</div></th>
+      <th><div class="th-inner">Vencimento</div></th>
+      <th><div class="th-inner">Alerta</div></th>
+      <th><div class="th-inner">Categoria</div></th>
+      <th><div class="th-inner">Status</div></th>
+      <th><div class="th-inner" style="cursor:default"></div></th>
+    </tr></thead>
+    <tbody id="tbody-fin"><tr class="">
+      <td style="color:#9ca3af;font-size:12px">1</td>
+      <td style="font-weight:500">Aluguel Sala</td>
+      <td style="white-space:nowrap;font-weight:500">R$ 10.000,00</td>
+      <td class="data-cel">05/04/2026</td>
+      <td style="font-size:12px;color:#6b7280;text-align:center">3 dias</td>
+      <td style="font-size:12px;color:#6b7280">Aluguel</td>
+      <td><span class="badge f-pendente">Pendente</span></td>
+      <td><div class="acoes">
+        <button onclick="marcarPago(100)" title="Marcar como pago" style="color:#15803d;font-weight:600">✓</button>
+        <button onclick="editarFin(100)" title="Editar">✏️</button>
+        <button class="del" onclick="excluirFin(100)" title="Excluir">✕</button>
+      </div></td>
+    </tr><tr class="">
+      <td style="color:#9ca3af;font-size:12px">2</td>
+      <td style="font-weight:500">Catho - conta da Karina</td>
+      <td style="white-space:nowrap;font-weight:500">R$ 275,00</td>
+      <td class="data-cel">08/04/2026</td>
+      <td style="font-size:12px;color:#6b7280;text-align:center">3 dias</td>
+      <td style="font-size:12px;color:#6b7280">Sistemas</td>
+      <td><span class="badge f-pendente">Pendente</span></td>
+      <td><div class="acoes">
+        <button onclick="marcarPago(1)" title="Marcar como pago" style="color:#15803d;font-weight:600">✓</button>
+        <button onclick="editarFin(1)" title="Editar">✏️</button>
+        <button class="del" onclick="excluirFin(1)" title="Excluir">✕</button>
+      </div></td>
+    </tr></tbody>
+  </table></div>
+</div>
+</div>
+
+<!-- FINANCEIRO PESSOAL -->
+<div class="secao" id="secao-finpessoal">
+<div class="container">
+  <div id="fp-alerta-banner" class="alerta-banner">
+    <h3>⚠ Atenção — Contas pessoais próximas ou vencidas</h3>
+    <div id="fp-alerta-lista"></div>
+  </div>
+  <div class="fin-stats" id="fp-fin-stats" style="grid-template-columns:repeat(5,1fr)">
+    <div class="fin-stat"><div class="fin-stat-label">Total contas</div><div class="fin-stat-val" style="color:#1a2340">2</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">A pagar</div><div class="fin-stat-val" style="color:#b45309">R$ 300,00</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">A receber</div><div class="fin-stat-val" style="color:#1d4ed8">R$ 6.250,00</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">Pagas/Recebidas</div><div class="fin-stat-val" style="color:#15803d">0</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">Vencidas</div><div class="fin-stat-val" style="color:#dc2626">0</div></div></div>
+  <div class="fin-header">
+    <div style="font-size:15px;font-weight:600;color:#1a2340">Contas Pessoais</div>
+    <div style="display:flex;gap:8px">
+      <button class="btn" style="background:#dcfce7;border-color:#86efac;color:#15803d;font-weight:600" onclick="abrirModalFP(&#39;receita&#39;)">+ Nova entrada</button>
+      <button class="btn" style="background:#ede9fe;border-color:#a78bfa;color:#6d28d9;font-weight:600" onclick="abrirModalFP(&#39;cartao&#39;)">💳 Nova fatura</button>
+      <button class="btn btn-nova" onclick="abrirModalFP(&#39;despesa&#39;)">+ Nova conta</button>
+    </div>
+  </div>
+  <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center">
+    <button id="fp-tab-todas" class="tab" style="background:#1a2340;color:#fff;border-color:#1a2340" onclick="fpFiltrarTipo(&#39;&#39;)">Todas</button>
+    <button id="fp-tab-despesa" class="tab" style="background:#fff;color:#374151;border-color:#d1d5db" onclick="fpFiltrarTipo(&#39;despesa&#39;)">Despesas</button>
+    <button id="fp-tab-receita" class="tab" style="background:#fff;color:#374151;border-color:#d1d5db" onclick="fpFiltrarTipo(&#39;receita&#39;)">Entradas</button>
+    <button id="fp-tab-cartao" class="tab" style="background:#fff;color:#374151;border-color:#d1d5db" onclick="fpFiltrarTipo(&#39;cartao&#39;)">💳 Cartões</button>
+  </div>
+  <div style="overflow-x:auto"><table class="fin-table">
+    <thead style="background:#374151"><tr>
+      <th><div class="th-inner" style="cursor:default">#</div></th>
+      <th><div class="th-inner">Tipo</div></th>
+      <th><div class="th-inner">Descricao</div></th>
+      <th><div class="th-inner">Valor</div></th>
+      <th><div class="th-inner">Data</div></th>
+      <th><div class="th-inner">Alerta</div></th>
+      <th><div class="th-inner">Categoria</div></th>
+      <th><div class="th-inner">Status</div></th>
+      <th><div class="th-inner" style="cursor:default"></div></th>
+    </tr></thead>
+    <tbody id="fp-tbody"><tr class=""><td style="color:#9ca3af;font-size:12px">1</td><td><span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600">Despesa</span></td><td style="font-weight:500">UBER - Zuriel</td><td><span style="white-space:nowrap;font-weight:500;color:#991b1b">R$ 300,00</span></td><td class="data-cel">31/03/2026</td><td style="font-size:12px;color:#6b7280;text-align:center">3 dias</td><td style="font-size:12px;color:#6b7280">Transporte</td><td><span class="badge f-pendente">Pendente</span></td><td><div class="acoes"><button onclick="fpMarcarPago(201)" title="Pago" style="color:#15803d;font-weight:600">✓</button><button onclick="fpEditar(201)" title="Editar">✍️</button><button class="del" onclick="fpExcluir(201)" title="Excluir">×</button></div></td></tr><tr class=""><td style="color:#9ca3af;font-size:12px">2</td><td><span style="background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600">Entrada</span></td><td style="font-weight:500">SALARIO ZURIEL<span style="display:inline-block;margin-left:5px;font-size:10px;background:#dbeafe;color:#1e40af;padding:1px 6px;border-radius:10px;font-weight:600">mensal</span></td><td><span style="white-space:nowrap;font-weight:500;color:#15803d">R$ 6.250,00</span></td><td class="data-cel">07/04/2026</td><td style="font-size:12px;color:#6b7280;text-align:center">—</td><td style="font-size:12px;color:#6b7280">Salario</td><td><span class="badge f-pendente">Pendente</span></td><td><div class="acoes"><button onclick="fpMarcarPago(200)" title="Recebido" style="color:#15803d;font-weight:600">✓</button><button onclick="fpEditar(200)" title="Editar">✍️</button><button class="del" onclick="fpExcluir(200)" title="Excluir">×</button></div></td></tr></tbody>
+  </table></div>
+</div>
+</div>
+
+<!-- Modal financeiro pessoal -->
+<div class="overlay" id="overlayFP">
+  <div class="modal">
+    <h2 id="fp-mTitulo">Nova fatura de cartão</h2>
+    <div id="fp-tipo-badge" style="display: inline-block; padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 14px; background: rgb(237, 233, 254); color: rgb(109, 40, 217);">&amp;#128179; Fatura de Cartão</div>
+    <div class="campo" id="fpCartaoNomeGrupo" style="display: block;"><label>Nome do cartão *</label><input id="fpCartaoNome" placeholder="Ex: Nubank, Inter, C6..."></div>
+    <div class="campo"><label>Descrição *</label><input id="fpDesc" placeholder="Ex: Aluguel, Salário..."></div>
+    <div class="campo">
+      <label id="fpValorLabel">Valor da fatura (R$)</label>
+      <div style="display:flex;align-items:center;gap:8px">
+        <input id="fpValor" type="number" step="0.01" min="0" placeholder="0,00" style="flex: 1 1 0%; opacity: 0.4; pointer-events: none;" disabled="">
+        <label id="fpSemValorLabel" style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgb(126, 34, 206); cursor: pointer; white-space: nowrap;">
+          <input type="checkbox" id="fpSemValor" onchange="fpToggleSemValor(this.checked)" style="width:14px;height:14px;accent-color:#7e22ce"> Fatura ainda não fechou
+        </label>
+      </div>
+    </div>
+    <div class="campo"><label id="fpDataLabel">Vencimento *</label><input id="fpData" type="date"></div>
+    <div class="campo" id="fpDiasGrupo" style="display: block;"><label>Alertar com quantos dias de antecedência?</label>
+      <div class="linha-alarme"><input id="fpDias" type="number" min="0" max="30" value="3"><span style="font-size:13px;color:#6b7280">dias antes</span></div>
+    </div>
+    <div class="campo"><label>Categoria</label>
+      <select id="fpCat">
+        <option>Moradia</option><option>Alimentação</option><option>Transporte</option><option>Saúde</option>
+        <option>Educação</option><option>Lazer</option><option>Salário</option><option>Freelance</option>
+        <option>Cartão de Crédito</option><option>Investimento</option><option>Outros</option>
+      </select>
+    </div>
+    <div class="campo" id="fpStatusGrupo" style="display: none;"><label>Status</label>
+      <select id="fpStatus"><option value="Pendente">Pendente</option><option value="Pago">Pago / Recebido</option></select>
+    </div>
+    <div class="campo">
+      <label>Recorrência</label>
+      <select id="fpRecorr" onchange="fpToggleParcelas()">
+        <option value="">Não recorrente</option>
+        <option value="mensal">Mensal</option><option value="quinzenal">Quinzenal</option>
+        <option value="semanal">Semanal</option><option value="anual">Anual</option>
+      </select>
+    </div>
+    <div class="campo" id="fpParcelasGrupo" style="display: block;">
+      <label>Total de parcelas <span style="font-weight:400;color:#9ca3af">(vazio = infinito)</span></label>
+      <input id="fpParcelas" type="number" min="2" max="360" placeholder="Ex: 12">
+    </div>
+    <div class="campo"><label>Observações</label><textarea id="fpObs" placeholder="Detalhes..."></textarea></div>
+    <div class="modal-btns"><button class="btn btn-sec" onclick="fecharModalFP()">Cancelar</button><button class="btn btn-add" onclick="salvarFP()">Salvar</button></div>
+  </div>
+</div>
+
+<!-- Modal informar valor fatura -->
+<div class="overlay" id="overlayFatura">
+  <div class="modal modal-sm">
+    <h2>💳 Informar valor da fatura</h2>
+    <div id="fpFaturaDesc" style="font-size:13px;color:#6b7280;margin-bottom:14px"></div>
+    <div class="campo"><label>Valor da fatura (R$) *</label><input id="fpFaturaValor" type="number" step="0.01" min="0" placeholder="0,00" onkeydown="if(event.key===&#39;Enter&#39;)salvarFatura()"></div>
+    <div class="modal-btns"><button class="btn btn-sec" onclick="fecharModalFatura()">Cancelar</button><button class="btn btn-add" onclick="salvarFatura()">Confirmar</button></div>
+  </div>
+</div>
+
+<!-- NOTAS -->
+<div class="notas-overlay" id="notasOverlay" style="display:none"></div>
+<div class="secao" id="secao-notas">
+<div class="container">
+  <div style="background:#fff;border-radius:8px;border:1px solid #e2e4e8;overflow:hidden;max-width:960px;margin:0 auto">
+    <div style="background:#1a2340;color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:15px;font-weight:600">📝 Bloco de Notas</span>
+      <span id="notaStatusTag" style="font-size:11px;opacity:.7">✓ Salvo</span>
+    </div>
+    <div id="notasTabs" style="display:flex;gap:4px;padding:8px 12px 0;background:#f9fafb;border-bottom:1px solid #e2e4e8;flex-wrap:wrap;min-height:42px;align-items:flex-end"><div style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px 6px 0 0;font-size:12px;font-weight:500;cursor:pointer;background:#fff;border:1px solid #e2e4e8;border-bottom:1px solid #fff;color:#1a2340;margin-bottom:-1px" onclick="notaTrocar(0)"><span>Nota 1</span><span onclick="event.stopPropagation();notaExcluir(0)" style="opacity:.4;font-size:11px;padding:0 2px;cursor:pointer" title="Excluir">✕</span></div><div style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px 6px 0 0;font-size:12px;font-weight:500;cursor:pointer;color:#6b7280;border:1px solid transparent" onclick="notaTrocar(1)"><span>Nova nota 2</span><span onclick="event.stopPropagation();notaExcluir(1)" style="opacity:.4;font-size:11px;padding:0 2px;cursor:pointer" title="Excluir">✕</span></div><div style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px 6px 0 0;font-size:12px;font-weight:500;cursor:pointer;color:#6b7280;border:1px solid transparent" onclick="notaTrocar(2)"><span>Nova nota 3</span><span onclick="event.stopPropagation();notaExcluir(2)" style="opacity:.4;font-size:11px;padding:0 2px;cursor:pointer" title="Excluir">✕</span></div><div onclick="notaNovaAba()" style="display:inline-flex;align-items:center;padding:5px 10px;cursor:pointer;color:#9ca3af;font-size:18px;border-radius:6px 6px 0 0" title="Nova nota">＋</div></div>
+    <div style="padding:14px 16px 8px">
+      <input id="notaTituloInput" type="text" placeholder="Título da nota..." style="width:100%;padding:7px 10px;border:1px solid #e2e4e8;border-radius:6px;font-size:13px;font-weight:600;color:#1a2340;margin-bottom:10px;outline:none" oninput="notaAlterarTitulo(this.value)">
+      <textarea id="notaTexto" placeholder="Digite suas anotações aqui..." style="width:100%;min-height:400px;border:1px solid #e2e4e8;border-radius:8px;padding:14px;font-size:13px;font-family:Arial,sans-serif;resize:vertical;color:#1a1a1a;line-height:1.7;outline:none" oninput="notaAlterarTexto(this.value)"></textarea>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 16px 12px">
+      <button onclick="notaExcluirAtual()" style="padding:5px 14px;border-radius:6px;border:1px solid #fca5a5;background:#fee2e2;color:#991b1b;font-size:12px;cursor:pointer">🗑 Excluir nota</button>
+      <span style="font-size:11px;color:#9ca3af">As notas salvam automaticamente</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Modal demanda -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h2 id="mTitulo">Nova demanda</h2>
+    <div class="campo"><label>Demanda / Tarefa *</label><input id="fDemanda" placeholder="Descreva a tarefa"></div>
+    <div class="campo"><label>Responsável *</label><input id="fResp"></div>
+    <div class="campo"><label>Categoria</label><select id="fCat"><option>RH / Vagas</option><option selected="">Administrativo</option><option>Equipe</option><option>CEO - Wagner</option></select></div>
+    <div class="campo"><label>Prioridade</label><select id="fPrio"><option>Alta</option><option>Média</option><option>Baixa</option></select></div>
+    <div class="campo"><label>Status</label><select id="fStatus"><option>Pendente</option><option>Em andamento</option><option>Concluído</option><option>Cancelado</option></select></div>
+    <div class="campo"><label>⏰ Prazo (opcional)</label><input id="fPrazo" type="date"></div>
+    <div class="campo"><label>Alertar X dias antes</label><input id="fPrazoDias" type="number" min="1" max="30" value="1" style="width:80px"></div>
+    <div class="campo"><label>Observações</label><textarea id="fObs" placeholder="Detalhes, contatos, valores..."></textarea></div>
+    <div class="modal-btns"><button class="btn btn-sec" onclick="fecharModal()">Cancelar</button><button class="btn btn-add" onclick="salvar()">Salvar</button></div>
+  </div>
+</div>
+
+<!-- Modal categoria -->
+<div class="overlay" id="overlayCat">
+  <div class="modal modal-sm">
+    <h2 id="tituloCat">Nova Categoria</h2>
+    <div class="campo"><label>Nome *</label><input id="fNomeCat" placeholder="Ex: Operações..." onkeydown="if(event.key===&#39;Enter&#39;)salvarCat()"></div>
+    <p style="font-size:12px;color:#9ca3af;margin-top:6px" id="descCat">Ficará disponível em todas as demandas.</p>
+    <div class="modal-btns"><button class="btn btn-sec" onclick="fecharModalCat()">Cancelar</button><button class="btn btn-add" id="btnSalvarCat" onclick="salvarCat()">Adicionar</button></div>
+  </div>
+</div>
+
+<!-- Modal financeiro -->
+<div class="overlay" id="overlayFin">
+  <div class="modal">
+    <h2 id="mTituloFin">Editar conta</h2>
+    <div class="campo"><label>Descrição *</label><input id="ffDesc" placeholder="Ex: Aluguel Brava, Catho..."></div>
+    <div class="campo"><label>Valor (R$) *</label><input id="ffValor" type="number" step="0.01" min="0" placeholder="0,00"></div>
+    <div class="campo"><label>Vencimento *</label><input id="ffVenc" type="date"></div>
+    <div class="campo"><label>Alertar com quantos dias de antecedência?</label>
+      <div class="linha-alarme"><input id="ffDias" type="number" min="0" max="30" value="3"><span style="font-size:13px;color:#6b7280">dias antes do vencimento</span></div>
+    </div>
+    <div class="campo"><label>Categoria</label><select id="ffCat"><option>Aluguel</option><option>Sistemas</option><option>Fornecedor</option><option>Salário</option><option>Imposto</option><option>Outros</option></select></div>
+    <div class="campo"><label>Status</label><select id="ffStatus"><option value="Pendente">Pendente</option><option value="Pago">Pago</option></select></div>
+    <div class="campo">
+      <label>Recorrência</label>
+      <select id="ffRecorr" onchange="toggleParcelas()">
+        <option value="">Não recorrente</option>
+        <option value="mensal">Mensal</option>
+        <option value="quinzenal">Quinzenal</option>
+        <option value="semanal">Semanal</option>
+        <option value="anual">Anual</option>
+      </select>
+    </div>
+    <div class="campo" id="campoParcelas" style="display: block;">
+      <label>Total de parcelas <span style="font-weight:400;color:#9ca3af">(vazio = infinito)</span></label>
+      <input id="ffParcelas" type="number" min="2" max="360" placeholder="Ex: 12 para 1 ano mensal">
+    </div>
+    <div class="campo"><label>Observações</label><textarea id="ffObs" placeholder="Detalhes, dados bancários..."></textarea></div>
+    <div class="modal-btns"><button class="btn btn-sec" onclick="fecharModalFin()">Cancelar</button><button class="btn btn-add" onclick="salvarFin()">Salvar</button></div>
+  </div>
+</div>
+
+<script>
+document.getElementById('dataAtual').textContent=new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
+const SK='zuriel_demandas',SC='zuriel_categorias',SN='zuriel_nextid',SNT='zuriel_notas',SFN='zuriel_financeiro',SFP='zuriel_finpessoal';
+let catAtiva='',editId=null,dragId=null,editCatNome=null,selecionadas=new Set(),sortCol='',sortDir=1,notaAtual=0,editFinId=null,nextFinId=100;
+const paleta=[{bg:'#ede9fe',color:'#5b21b6'},{bg:'#e0f2fe',color:'#0369a1'},{bg:'#fce7f3',color:'#9d174d'},{bg:'#ecfccb',color:'#3f6212'},{bg:'#fef9c3',color:'#854d0e'},{bg:'#fee2e2',color:'#991b1b'},{bg:'#f0fdf4',color:'#166534'},{bg:'#fff7ed',color:'#9a3412'},{bg:'#f0f9ff',color:'#0c4a6e'},{bg:'#fdf4ff',color:'#7e22ce'},{bg:'#fefce8',color:'#713f12'},{bg:'#ecfdf5',color:'#065f46'}];
+function corCat(n){const i=categorias.indexOf(n);return paleta[(i<0?0:i)%paleta.length]}
+function dataHoje(){return new Date().toLocaleDateString('pt-BR')}
+function toIso(s){if(!s)return '';const p=s.split('/');return p.length===3?`${p[2]}-${p[1].padStart(2,'0')}-${p[0].padStart(2,'0')}`:''}
+function fromIso(s){if(!s)return '';const p=s.split('-');return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:''}
+function prioNum(p){return p==='Alta'?0:p==='Baixa'?2:1}
+function statusFim(s){return s==='Concluído'||s==='Cancelado'}
+function gv(id){const el=document.getElementById(id);return el?el.value:''}
+
+function trocarSecao(nome){
+  // Salvar nota atual antes de trocar de aba
+  const ta=document.getElementById('notaTexto');
+  if(ta&&notas&&notas[notaAtual])notas[notaAtual].texto=ta.value;
+  salvarDados();
+  document.querySelectorAll('.secao').forEach(s=>s.classList.remove('ativa'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('ativo'));
+  document.getElementById('secao-'+nome).classList.add('ativa');
+  document.getElementById('nav-'+nome).classList.add('ativo');
+  if(nome==='financeiro'){renderFinanceiro();verificarAlertas();}
+  if(nome==='finpessoal'){renderFinPessoal();}
+  if(nome==='notas'){
+    renderNotasTabs();
+    carregarNotaAtual();
+    // Registrar listener de auto-save no textarea
+    const ta=document.getElementById('notaTexto');
+    if(ta){
+      ta.oninput=function(){
+        if(notas&&notas[notaAtual])notas[notaAtual].texto=this.value;
+        salvarDados();
+      };
+    }
+  }
+}
+
+const drops=['demanda','resp','cat','prio','status','entrada','conclusao','prazo','obs'];
+function toggleDrop(nome){const isOpen=document.getElementById('drop-'+nome).classList.contains('open');fecharTodosDrop();if(!isOpen){document.getElementById('drop-'+nome).classList.add('open');document.getElementById('th-'+nome).classList.add('ativo');}}
+function fecharDrop(nome){document.getElementById('drop-'+nome).classList.remove('open');document.getElementById('th-'+nome).classList.remove('ativo');}
+function fecharTodosDrop(){drops.forEach(d=>{const el=document.getElementById('drop-'+d);if(el)el.classList.remove('open');const th=document.getElementById('th-'+d);if(th)th.classList.remove('ativo');});}
+document.addEventListener('click',function(e){if(!e.target.closest('th')&&!e.target.closest('.notas-overlay')&&!e.target.closest('.overlay'))fecharTodosDrop();});
+function limparDrop(nome){
+  if(nome==='demanda'){const el=document.getElementById('fd-demanda');if(el)el.value='';}
+  else if(nome==='resp'){const el=document.getElementById('fd-resp');if(el)el.value='';}
+  else if(nome==='cat'){const el=document.getElementById('fd-cat');if(el){el.value='';catAtiva='';renderTabs();}}
+  else if(nome==='prio'){const el=document.getElementById('fd-prio');if(el)el.value='';}
+  else if(nome==='status'){const el=document.getElementById('fd-status');if(el)el.value='';}
+  else if(nome==='entrada'){['fd-entrada-de','fd-entrada-ate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});}
+  else if(nome==='conclusao'){['fd-conclusao-de','fd-conclusao-ate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});}
+  else if(nome==='obs'){const el=document.getElementById('fd-obs');if(el)el.value='';}
+  else if(nome==='prazo'){['fd-prazo-de','fd-prazo-ate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});}
+  atualizarIndicadores();renderTabela();atualizarBtnLimpar();
+}
+function atualizarIndicadores(){
+  const mapa={demanda:'fd-demanda',resp:'fd-resp',cat:'fd-cat',prio:'fd-prio',status:'fd-status',obs:'fd-obs'};
+  drops.forEach(d=>{const th=document.getElementById('th-'+d);if(!th)return;let a=false;if(d==='entrada')a=!!(gv('fd-entrada-de')||gv('fd-entrada-ate'));else if(d==='conclusao')a=!!(gv('fd-conclusao-de')||gv('fd-conclusao-ate'));else if(mapa[d])a=!!gv(mapa[d]);if(a)th.classList.add('filtrado');else th.classList.remove('filtrado');});
+}
+function aplicarFiltroInline(){atualizarIndicadores();renderTabela();atualizarBtnLimpar();}
+function filtrarCatSelect(){catAtiva=gv('fd-cat');renderTabs();aplicarFiltroInline();}
+
+const DADOS=[
+  {id:1,demanda:"LISTA DE LEADS",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Pendente",obs:"LISTA DE LEAD - SEGMENTADO AREA DE INDÚSTRIA  AGRONEGOCIO",entrada:"20/03/2026",conclusao:""},
+  {id:2,demanda:"lixeiro, cafeteira, xicaras, tirar uma cadeira",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Pendente",obs:"",entrada:"20/03/2026",conclusao:""},
+  {id:3,demanda:"PROPOSTA SDR - ISA",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Concluído",obs:"1. AUMENTAR O FIXO 2. REGISTRO 3. QUANDO ELA COMEÇA A LIGAR",entrada:"20/03/2026",conclusao:"20/03/2026"},
+  {id:4,demanda:"ENVIAR CONTRATO BRAVA",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Pendente",obs:"1. Primeiro pagamento cobrado somente daqui 15 dias. 2. DEFINIR O DIA PAGAMENTO: DIA 5 OU DIA 25",entrada:"20/03/2026",conclusao:""},
+  {id:5,demanda:"CADASTRO - PONTTOONLINE",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Pendente",obs:"R$ 216,56 incluso suporte e aplicativo",entrada:"20/03/2026",conclusao:""},
+  {id:6,demanda:"CATHO - filtrar vagas: gerente, analistas e advogados",resp:"Paula",cat:"Equipe",prio:"Alta",status:"Pendente",obs:"",entrada:"20/03/2026",conclusao:""},
+  {id:7,demanda:"CADASTRO - SERASA XPERIAN",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Pendente",obs:"Serasa Xperien: 120 ou 240 mensal, cartão?",entrada:"20/03/2026",conclusao:""},
+  {id:8,demanda:"CADASTRO - OMIE",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Pendente",obs:"Omie: cadastro, esperando contato, verificar upgrade qual valor",entrada:"20/03/2026",conclusao:""},
+  {id:9,demanda:"CADASTRO - VADU",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Pendente",obs:"nao aceita gmail, nao tem whats, ligar (11) 3198-1857",entrada:"20/03/2026",conclusao:""},
+  {id:10,demanda:"CADASTRO - RD STATION",resp:"Tati",cat:"CEO - Wagner",prio:"Alta",status:"Em andamento",obs:"CRM para comercial: CRM e atendimento, sem ia, 1349, 3 meses com 50%",entrada:"17/03/2026",conclusao:""},
+  {id:11,demanda:"COWORKING BRAVA - 10 mil mensal",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Concluído",obs:"contrato 1 ano, ficamos de teste a partir de segunda, 15 dias de prazo pro primeiro pagamento",entrada:"19/03/2026",conclusao:"20/03/2026"},
+  {id:12,demanda:"TREINAMENTO DO WAGNER PARA TODA EQUIPE",resp:"Tati",cat:"CEO - Wagner",prio:"Baixa",status:"Pendente",obs:"SOBRE FUNDOS E SOBRE TODO O PROCESSO DE CRÉDITO",entrada:"19/03/2026",conclusao:""},
+  {id:13,demanda:"REUNIÃO WAGNER E PAULA",resp:"Tati",cat:"Administrativo",prio:"Média",status:"Pendente",obs:"",entrada:"19/03/2026",conclusao:""},
+  {id:14,demanda:"REUNIÃO EQUIPE COM A KA",resp:"Tati",cat:"Administrativo",prio:"Média",status:"Pendente",obs:"",entrada:"19/03/2026",conclusao:""},
+  {id:15,demanda:"REUNIÃO SDR - ISA",resp:"Tati",cat:"RH / Vagas",prio:"Alta",status:"Concluído",obs:"VIDEO CHAMADA",entrada:"19/03/2026",conclusao:"19/03/2026"},
+  {id:16,demanda:"VERIFICAR CONTA DA CATHO",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Em andamento",obs:"KA - VERIFICAR DEBITOS E CANDIDATURA IVA - VAO LIGAR",entrada:"19/03/2026",conclusao:""},
+  {id:17,demanda:"EXPANDIR VAGAS DE ANALISTAS PARA BC E SP",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Concluído",obs:"",entrada:"19/03/2026",conclusao:"19/03/2026"},
+  {id:18,demanda:"EXPANDIR VAGAS E AJUSTAR SALARIO - GERENTE DE RELACIONAMENTO",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Concluído",obs:"GERENTE DE RELACIONAMENTO - R$ 4.800 São Paulo, Balneário Camboriú, BH, Porto Alegre, Curitiba, Goiânia, Campo Grande MS",entrada:"18/03/2026",conclusao:"19/03/2026"},
+  {id:19,demanda:"VERIFICAR UBER ALUGUEL",resp:"Tati",cat:"Administrativo",prio:"Média",status:"Pendente",obs:"",entrada:"18/03/2026",conclusao:""},
+  {id:20,demanda:"TERMOS E CODIGOS",resp:"Tati",cat:"Administrativo",prio:"Média",status:"Em andamento",obs:"1. CODIGO DE ÉTICA - OK 2. TERMO DE CONFIDENCIALIDADE - OK 3. TERMOS DE RESPONSABILIDADE DE DADOS - 4. POLÍTICA DE DADOS LGPD PARA COLABORADORES - 5. POLÍTICA DE PRIVACIDADE PARA CLIENTES",entrada:"18/03/2026",conclusao:""},
+  {id:21,demanda:"PONTTOONLINE - ligar",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Pendente",obs:"Plano Completo R$119-R$229/mês. Registro foto/QR/PIN, Geolocalização, Portal colaborador, Assinatura eletrônica, Relatórios avançados, Suporte WhatsApp/telefone",entrada:"18/03/2026",conclusao:""},
+  {id:22,demanda:"Avaliar curriculos e filtrar",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Concluído",obs:"1. ANALISTA DE RISCO, CONTABIL E FINACEIRO 2. ECONOMISTA, ADVOGADO EMPRESARIAL, TRIBUTARISTA, GERENTE DE RELACIONAMENTO.",entrada:"18/03/2026",conclusao:"18/03/2026"},
+  {id:23,demanda:"VISITA COWORKING DESMARCAR",resp:"Tati",cat:"CEO - Wagner",prio:"Alta",status:"Cancelado",obs:"Verificar contrato",entrada:"17/03/2026",conclusao:""},
+  {id:24,demanda:"ClickSign — fazer cadastro",resp:"Tati",cat:"CEO - Wagner",prio:"Alta",status:"Em andamento",obs:"Cadastro feito, precisa contratar o plano",entrada:"17/03/2026",conclusao:""},
+  {id:25,demanda:"Exames admissionais — QUANTOS funcionários?",resp:"Tati",cat:"CEO - Wagner",prio:"Alta",status:"Em andamento",obs:"Edimed | Alvin Bauer 47 9640-0053 | Cliomed — custo e prazo dos laudos",entrada:"17/03/2026",conclusao:""},
+  {id:26,demanda:"Fluxograma da empresa",resp:"Tati",cat:"CEO - Wagner",prio:"Alta",status:"Em andamento",obs:"Por hierarquia, ou por ordem de setor?",entrada:"17/03/2026",conclusao:""},
+  {id:27,demanda:"SDR - Isa agendar vídeo",resp:"Tati",cat:"RH / Vagas",prio:"Alta",status:"Em andamento",obs:"Salário R$2.800 + R$250 por agendamento de visita",entrada:"17/03/2026",conclusao:""},
+  {id:28,demanda:"Vaga SDR",resp:"Tati",cat:"RH / Vagas",prio:"Alta",status:"Em andamento",obs:"Publicada OK",entrada:"17/03/2026",conclusao:""},
+  {id:29,demanda:"Vaga Heads Comerciais — publicar e selecionar",resp:"Tati",cat:"RH / Vagas",prio:"Média",status:"Pendente",obs:"OK",entrada:"17/03/2026",conclusao:""},
+  {id:30,demanda:"Sala café - REMARCAR COM DANI",resp:"Tati",cat:"CEO - Wagner",prio:"Média",status:"Cancelado",obs:"REAGENDAR?",entrada:"17/03/2026",conclusao:""},
+  {id:31,demanda:"VISITA Sala Rafael — R$8.500",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Concluído",obs:"Rafael OK",entrada:"17/03/2026",conclusao:"17/03/2026"},
+  {id:32,demanda:"Vaga Gerente de Relacionamento — 2 vagas separadas",resp:"Tati",cat:"RH / Vagas",prio:"Alta",status:"Em andamento",obs:"2 vagas OK",entrada:"17/03/2026",conclusao:""},
+  {id:33,demanda:"Vaga Economista",resp:"Tati",cat:"RH / Vagas",prio:"Alta",status:"Em andamento",obs:"Híbrido — SP/Recife/BC",entrada:"17/03/2026",conclusao:""},
+  {id:34,demanda:"Vaga Advogado Empresarial",resp:"Tati",cat:"RH / Vagas",prio:"Alta",status:"Em andamento",obs:"Híbrido — SP/Recife/BC",entrada:"17/03/2026",conclusao:""},
+  {id:35,demanda:"Vaga Tributarista",resp:"Tati",cat:"RH / Vagas",prio:"Alta",status:"Em andamento",obs:"Híbrido — SP/Recife/BC",entrada:"17/03/2026",conclusao:""},
+  {id:36,demanda:"Paula — pedir documentação e ver sala",resp:"Tati",cat:"Administrativo",prio:"Média",status:"Pendente",obs:"Sala de reunião ao lado do V8, Riviera, térreo",entrada:"17/03/2026",conclusao:""},
+  {id:37,demanda:"Finalizar políticas e normas internas",resp:"Tati",cat:"Administrativo",prio:"Média",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:38,demanda:"Material de escritório — levantar e comprar",resp:"Tati",cat:"Administrativo",prio:"Baixa",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:39,demanda:"Rômulo Contador — contato e alinhamento",resp:"Tati",cat:"Administrativo",prio:"Média",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:40,demanda:"Verificar salário Gerente de Relacionamento com Wagner",resp:"Wagner",cat:"CEO - Wagner",prio:"Média",status:"Pendente",obs:"Faixa: R$4.000 a R$12.000",entrada:"17/03/2026",conclusao:""},
+  {id:41,demanda:"Falar com advogado",resp:"Wagner",cat:"CEO - Wagner",prio:"Alta",status:"Pendente",obs:"Segunda-feira",entrada:"17/03/2026",conclusao:""},
+  {id:42,demanda:"Mensagens de WhatsApp — estruturar templates",resp:"Tati",cat:"CEO - Wagner",prio:"Média",status:"Pendente",obs:"Verificar com Wagner",entrada:"17/03/2026",conclusao:""},
+  {id:43,demanda:"CONTRATADA - Vaga Assistente de Diretoria — presencial BC",resp:"Tati",cat:"RH / Vagas",prio:"Alta",status:"Concluído",obs:"Contratada Paula",entrada:"17/03/2026",conclusao:"17/03/2026"},
+  {id:44,demanda:"Vaga Analista de Risco — híbrido BC",resp:"Tati",cat:"RH / Vagas",prio:"Média",status:"Em andamento",obs:"Híbrido — BC",entrada:"17/03/2026",conclusao:""},
+  {id:45,demanda:"Vaga Analista Contábil — híbrido BC",resp:"Tati",cat:"RH / Vagas",prio:"Alta",status:"Em andamento",obs:"Híbrido — BC",entrada:"17/03/2026",conclusao:""},
+  {id:46,demanda:"Vaga Analista Financeiro — BC/SP",resp:"Tati",cat:"RH / Vagas",prio:"Média",status:"Em andamento",obs:"BC/SP — OK",entrada:"17/03/2026",conclusao:""},
+  {id:47,demanda:"TERMOS E Código de Ética — elaborar e preparar para assinatura",resp:"Tati",cat:"Administrativo",prio:"Média",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:48,demanda:"ALU — 4 notebooks para equipe",resp:"Paula",cat:"Equipe",prio:"Alta",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:49,demanda:"Marcos Aloisi — plano Unimed, quantos colaboradores?",resp:"Tati",cat:"Administrativo",prio:"Média",status:"Pendente",obs:"Será novo plano",entrada:"17/03/2026",conclusao:""},
+  {id:50,demanda:"Taxa de transfer Carlo Uber — verificar",resp:"Paula",cat:"Equipe",prio:"Média",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:51,demanda:"Criar Google Drive para todos os arquivos da empresa",resp:"Tati",cat:"Administrativo",prio:"Alta",status:"Concluído",obs:"",entrada:"17/03/2026",conclusao:"17/03/2026"},
+  {id:52,demanda:"Flash Benefícios — cadastrar colaboradores",resp:"Tati",cat:"RH / Vagas",prio:"Média",status:"Pendente",obs:"Avaliar plataforma alternativa",entrada:"17/03/2026",conclusao:""},
+  {id:53,demanda:"Verificar locação de notebook e celular",resp:"Paula",cat:"Equipe",prio:"Média",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:54,demanda:"Curso de IA para ADM",resp:"Tati",cat:"Administrativo",prio:"Baixa",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:55,demanda:"Gravador para reuniões e processos internos",resp:"Tati",cat:"Administrativo",prio:"Baixa",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:56,demanda:"Uniforme — camisetas polo para Heads Comerciais",resp:"Tati",cat:"RH / Vagas",prio:"Baixa",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+  {id:57,demanda:"Assessoria jurídica contábil — elaborar contratos",resp:"Jurídico",cat:"Equipe",prio:"Baixa",status:"Pendente",obs:"Contato: advogado da ONI",entrada:"17/03/2026",conclusao:""},
+  {id:58,demanda:"Meta de crescimento administrativo — quinzenal",resp:"Tati",cat:"RH / Vagas",prio:"Média",status:"Pendente",obs:"",entrada:"17/03/2026",conclusao:""},
+];
+const CATS=['RH / Vagas','Administrativo','Equipe','CEO - Wagner'];
+let demandas=[],categorias=[],nextId=300,notas=[],contas=[],contasPessoais=[],nextFPId=200;
+
+function carregarDados(){
+  try{
+    const d=localStorage.getItem(SK),c=localStorage.getItem(SC),n=localStorage.getItem(SN),nt=localStorage.getItem(SNT),fn=localStorage.getItem(SFN);
+    demandas=d?JSON.parse(d):JSON.parse(JSON.stringify(DADOS));
+    categorias=c?JSON.parse(c):[...CATS];
+    nextId=n?parseInt(n):300;
+    notas=nt?JSON.parse(nt):[{titulo:'Nota 1',texto:''}];
+    if(fn){const fobj=JSON.parse(fn);contas=Array.isArray(fobj)?fobj:(fobj.contas&&Array.isArray(fobj.contas)?fobj.contas:[]);nextFinId=fobj.nextId||((contas.length?Math.max(...contas.map(c=>c.id)):99)+1);}else{contas=[];nextFinId=100;}
+    const fp=localStorage.getItem(SFP);if(fp){const fpobj=JSON.parse(fp);contasPessoais=fpobj.contas||[];nextFPId=fpobj.nextId||200;}else{contasPessoais=[];nextFPId=200;}
+  }catch(e){demandas=JSON.parse(JSON.stringify(DADOS));categorias=[...CATS];nextId=300;notas=[{titulo:'Nota 1',texto:''}];contas=[];contasPessoais=[];}
+}
+function salvarDados(){
+  try{
+    localStorage.setItem(SK,JSON.stringify(demandas));
+    localStorage.setItem(SC,JSON.stringify(categorias));
+    localStorage.setItem(SN,String(nextId));
+    localStorage.setItem(SNT,JSON.stringify(notas));
+    localStorage.setItem(SFN,JSON.stringify({contas:contas,nextId:nextFinId}));
+    localStorage.setItem(SFP,JSON.stringify({contas:contasPessoais,nextId:nextFPId}));
+    const t=document.getElementById('salvoTag');if(t)t.textContent='&#10003; Salvo';
+  }catch(e){const t=document.getElementById('salvoTag');if(t)t.textContent='⚠ Erro';}
+}
+function resetarDados(){if(!confirm('Apagar todas as alterações e voltar aos dados originais?'))return;[SK,SC,SN,SNT,SFN].forEach(k=>localStorage.removeItem(k));carregarDados();catAtiva='';renderAll();}
+
+/* ===== FINANCEIRO ===== */
+function statusContaDia(c){
+  const hoje=new Date();hoje.setHours(0,0,0,0);
+  const venc=new Date(c.vencimento);venc.setHours(0,0,0,0);
+  if(c.status==='Pago')return 'pago';
+  if(venc<hoje)return 'vencido';
+  const diff=Math.ceil((venc-hoje)/(864e5));
+  if(diff<=(c.diasAlerta||3))return 'alerta';
+  return 'pendente';
+}
+function verificarAlertas(){
+  const urgentes=contas.filter(c=>c.status!=='Pago'&&['vencido','alerta'].includes(statusContaDia(c)));
+  const banner=document.getElementById('alerta-banner'),lista=document.getElementById('alerta-lista');
+  if(!banner||!lista)return;
+  if(!urgentes.length){banner.classList.remove('visivel');return;}
+  banner.classList.add('visivel');
+  lista.innerHTML=urgentes.map(c=>{
+    const st=statusContaDia(c),icone=st==='vencido'?'🔴':'🟡',label=st==='vencido'?'VENCIDA':'vence em breve';
+    return `<div class="alerta-item">${icone} <strong>${c.descricao}${c.recorrencia?'<span style="display:inline-block;margin-left:6px;font-size:10px;background:#dbeafe;color:#1e40af;padding:1px 6px;border-radius:10px;font-weight:600">🔄 '+c.recorrencia+(c.totalParcelas?' '+(c.parcelaAtual||1)+'/'+c.totalParcelas:'')+'</span>':''}</strong> — R$ ${parseFloat(c.valor).toLocaleString('pt-BR',{minimumFractionDigits:2})} — vto ${fromIso(c.vencimento)} (${label})</div>`;
+  }).join('');
+  if(typeof Notification!=='undefined'&&Notification.permission==='granted'){
+    urgentes.slice(0,3).forEach(c=>{try{new Notification('⚠ Zuriel — Conta a vencer',{body:`${c.descricao} — vto ${fromIso(c.vencimento)}`});}catch(e){}});
+  }
+}
+function pedirPermissaoNotificacao(){if(typeof Notification!=='undefined'&&Notification.permission==='default'){Notification.requestPermission();}}
+function renderFinanceiro(){
+  const pend=contas.filter(c=>c.status!=='Pago'),pagas=contas.filter(c=>c.status==='Pago'),venc=contas.filter(c=>statusContaDia(c)==='vencido');
+  const totalPend=pend.reduce((s,c)=>s+parseFloat(c.valor||0),0);
+  document.getElementById('fin-stats').innerHTML=`
+    <div class="fin-stat"><div class="fin-stat-label">Total contas</div><div class="fin-stat-val" style="color:#1a2340">${contas.length}</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">A pagar</div><div class="fin-stat-val" style="color:#b45309">R$ ${totalPend.toLocaleString('pt-BR',{minimumFractionDigits:2})}</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">Pagas</div><div class="fin-stat-val" style="color:#15803d">${pagas.length}</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">Vencidas</div><div class="fin-stat-val" style="color:#dc2626">${venc.length}</div></div>`;
+  const tb=document.getElementById('tbody-fin');
+  if(!contas.length){tb.innerHTML=`<tr><td colspan="8" class="empty">Nenhuma conta cadastrada. Clique em + Nova conta para adicionar.</td></tr>`;return;}
+  const sorted=[...contas].sort((a,b)=>a.vencimento.localeCompare(b.vencimento));
+  tb.innerHTML=sorted.map((c,i)=>{
+    const st=statusContaDia(c),rowCls=st==='vencido'?'fin-vencido':st==='alerta'?'fin-alerta':'';
+    const badgeCls=c.status==='Pago'?'f-pago':st==='vencido'?'f-vencido':'f-pendente';
+    const badgeLabel=c.status==='Pago'?'Pago':st==='vencido'?'Vencida':'Pendente';
+    return `<tr class="${rowCls}">
+      <td style="color:#9ca3af;font-size:12px">${i+1}</td>
+      <td style="font-weight:500">
+        ${c.descricao}
+        ${c.recorrencia?`<span style="display:inline-block;margin-left:5px;font-size:10px;background:#dbeafe;color:#1e40af;padding:1px 6px;border-radius:10px;font-weight:600">🔄 ${c.recorrencia}${c.totalParcelas?' '+(c.parcelaAtual||1)+'/'+c.totalParcelas:''}</span>`:''}
+        ${c.ultimaParcela?`<span style="display:inline-block;margin-left:5px;font-size:10px;background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:10px;font-weight:700">🔔 ÚLTIMA</span>`:''}
+        ${c.obs?`<div style="font-size:11px;color:#6b7280;margin-top:2px">${c.obs}</div>`:''}
+      </td>
+      <td style="white-space:nowrap;font-weight:500">R$ ${parseFloat(c.valor).toLocaleString('pt-BR',{minimumFractionDigits:2})}</td>
+      <td class="data-cel">${fromIso(c.vencimento)}</td>
+      <td style="font-size:12px;color:#6b7280;text-align:center">${c.diasAlerta||3} dias</td>
+      <td style="font-size:12px;color:#6b7280">${c.categoria}</td>
+      <td><span class="badge ${badgeCls}">${badgeLabel}</span></td>
+      <td><div class="acoes">
+        ${c.status!=='Pago'?`<button onclick="marcarPago(${c.id})" title="Marcar como pago" style="color:#15803d;font-weight:600">✓</button>`:''}
+        <button onclick="editarFin(${c.id})" title="Editar">✏️</button>
+        <button class="del" onclick="excluirFin(${c.id})" title="Excluir">✕</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+}
+function abrirModalFin(id){
+  editFinId=id||null;document.getElementById('mTituloFin').textContent=id?'Editar conta':'Nova conta';
+  if(id){const c=contas.find(x=>x.id===id);document.getElementById('ffDesc').value=c.descricao;document.getElementById('ffValor').value=c.valor;document.getElementById('ffVenc').value=c.vencimento;document.getElementById('ffDias').value=c.diasAlerta||3;document.getElementById('ffCat').value=c.categoria;document.getElementById('ffStatus').value=c.status;document.getElementById('ffRecorr').value=c.recorrencia||'';document.getElementById('ffParcelas').value=c.totalParcelas||'';document.getElementById('campoParcelas').style.display=c.recorrencia?'block':'none';document.getElementById('ffObs').value=c.obs||'';}
+  else{['ffDesc','ffObs'].forEach(x=>document.getElementById(x).value='');document.getElementById('ffValor').value='';document.getElementById('ffVenc').value='';document.getElementById('ffDias').value=3;document.getElementById('ffCat').value='Outros';document.getElementById('ffStatus').value='Pendente';document.getElementById('ffRecorr').value='';document.getElementById('ffParcelas').value='';document.getElementById('campoParcelas').style.display='none';}
+  document.getElementById('overlayFin').classList.add('open');pedirPermissaoNotificacao();
+}
+function fecharModalFin(){document.getElementById('overlayFin').classList.remove('open')}
+function toggleParcelas(){const v=document.getElementById('ffRecorr').value;document.getElementById('campoParcelas').style.display=v?'block':'none';}
+function editarFin(id){abrirModalFin(id)}
+function excluirFin(id){if(!confirm('Excluir esta conta?'))return;contas=contas.filter(x=>x.id!==id);salvarDados();renderFinanceiro();verificarAlertas();}
+function marcarPago(id){
+  const c=contas.find(x=>x.id===id);
+  if(!c)return;
+  c.status='Pago';
+  if(c.recorrencia){
+    const proxParcela=(c.parcelaAtual||1)+1;
+    const temLimite=c.totalParcelas&&c.totalParcelas>0;
+    const ultimaParcela=temLimite&&proxParcela>c.totalParcelas;
+    if(!ultimaParcela){
+      const novoVenc=proximoVencimento(c.vencimento,c.recorrencia);
+      const eUltima=temLimite&&proxParcela===c.totalParcelas;
+      const nova={
+        id:nextFinId++,
+        descricao:c.descricao,
+        valor:c.valor,
+        vencimento:novoVenc,
+        diasAlerta:c.diasAlerta,
+        categoria:c.categoria,
+        status:'Pendente',
+        recorrencia:c.recorrencia,
+        totalParcelas:c.totalParcelas||null,
+        parcelaAtual:proxParcela,
+        ultimaParcela:eUltima,
+        obs:c.obs
+      };
+      contas.push(nova);
+      if(eUltima){
+        setTimeout(()=>{
+          alert('🔔 ÚLTIMA PARCELA!\n\n'+c.descricao+'\nVencimento: '+fromIso(novoVenc)+'\n\nEsta é a última das '+c.totalParcelas+' parcelas.');
+          if(typeof Notification!=='undefined'&&Notification.permission==='granted')
+            new Notification('🔔 Última parcela — '+c.descricao,{body:'Vencimento: '+fromIso(novoVenc)+' ('+c.totalParcelas+'/'+c.totalParcelas+')'});
+        },100);
+      } else {
+        const info=temLimite?' ('+proxParcela+'/'+c.totalParcelas+')':'';
+        setTimeout(()=>alert('✅ Pago! Próxima parcela'+info+' criada para '+fromIso(novoVenc)+'.'),100);
+      }
+    } else {
+      setTimeout(()=>alert('✅ Todas as '+c.totalParcelas+' parcelas de "'+c.descricao+'" foram concluídas!'),100);
+    }
+  }
+  salvarDados();renderFinanceiro();verificarAlertas();
+}
+function proximoVencimento(vencISO, recorrencia){
+  const d=new Date(vencISO+'T12:00:00');
+  if(recorrencia==='mensal'){d.setMonth(d.getMonth()+1);}
+  else if(recorrencia==='quinzenal'){d.setDate(d.getDate()+15);}
+  else if(recorrencia==='semanal'){d.setDate(d.getDate()+7);}
+  else if(recorrencia==='anual'){d.setFullYear(d.getFullYear()+1);}
+  return d.toISOString().split('T')[0];
+}
+function salvarFin(){
+  try{
+    const desc=document.getElementById('ffDesc').value.trim();
+    const valor=document.getElementById('ffValor').value;
+    const venc=document.getElementById('ffVenc').value;
+    if(!desc||!valor||!venc){alert('Preencha descrição, valor e vencimento.');return;}
+    const recorrEl=document.getElementById('ffRecorr');
+    const parcelasEl=document.getElementById('ffParcelas');
+    const totalParc=parcelasEl&&parcelasEl.value?parseInt(parcelasEl.value):null;
+    const obj={
+      descricao:desc,
+      valor:parseFloat(valor),
+      vencimento:venc,
+      diasAlerta:parseInt(document.getElementById('ffDias').value)||3,
+      categoria:document.getElementById('ffCat').value,
+      status:document.getElementById('ffStatus').value,
+      recorrencia:recorrEl?recorrEl.value:'',
+      totalParcelas:totalParc,
+      parcelaAtual:1,
+      obs:document.getElementById('ffObs').value.trim()
+    };
+    if(editFinId){
+      const i=contas.findIndex(x=>x.id===editFinId);
+      if(i>=0)contas[i]={...contas[i],...obj};
+    } else {
+      contas.push({id:nextFinId++,...obj});
+    }
+    fecharModalFin();
+    salvarDados();
+    renderFinanceiro();
+    verificarAlertas();
+  }catch(err){alert('Erro ao salvar conta: '+err.message);}
+}
+document.getElementById('overlayFin').addEventListener('click',e=>{if(e.target===document.getElementById('overlayFin'))fecharModalFin()});
+
+/* ===== FINANCEIRO PESSOAL ===== */
+var editFPId=null,fpTipoModal='despesa',fpFiltroTipo='',fpFaturaEditId=null;
+
+function fpStatusDia(c){
+  const hoje=new Date();hoje.setHours(0,0,0,0);
+  const dt=new Date(c.data);dt.setHours(0,0,0,0);
+  if(c.status==='Pago')return 'pago';
+  if(c.tipo==='receita')return 'pendente';
+  if(c.tipo==='cartao'&&!c.valor)return 'aguardando';
+  if(dt<hoje)return 'vencido';
+  const diff=Math.ceil((dt-hoje)/(864e5));
+  if(diff<=(c.diasAlerta||3))return 'alerta';
+  return 'pendente';
+}
+
+function renderFinPessoal(){
+  const listaFiltro=fpFiltroTipo?contasPessoais.filter(c=>c.tipo===fpFiltroTipo):contasPessoais;
+  const despesas=contasPessoais.filter(c=>c.tipo==='despesa'||c.tipo==='cartao');
+  const receitas=contasPessoais.filter(c=>c.tipo==='receita');
+  const pagas=contasPessoais.filter(c=>c.status==='Pago');
+  const vencidas=contasPessoais.filter(c=>fpStatusDia(c)==='vencido');
+  const totalPagar=despesas.filter(c=>c.status!=='Pago'&&c.valor).reduce((s,c)=>s+parseFloat(c.valor||0),0);
+  const totalReceber=receitas.filter(c=>c.status!=='Pago').reduce((s,c)=>s+parseFloat(c.valor||0),0);
+  document.getElementById('fp-fin-stats').innerHTML=`
+    <div class="fin-stat"><div class="fin-stat-label">Total contas</div><div class="fin-stat-val" style="color:#1a2340">${contasPessoais.length}</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">A pagar</div><div class="fin-stat-val" style="color:#b45309">R$ ${totalPagar.toLocaleString('pt-BR',{minimumFractionDigits:2})}</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">A receber</div><div class="fin-stat-val" style="color:#1d4ed8">R$ ${totalReceber.toLocaleString('pt-BR',{minimumFractionDigits:2})}</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">Pagas/Recebidas</div><div class="fin-stat-val" style="color:#15803d">${pagas.length}</div></div>
+    <div class="fin-stat"><div class="fin-stat-label">Vencidas</div><div class="fin-stat-val" style="color:#dc2626">${vencidas.length}</div></div>`;
+  // Alertas — inclui cartões aguardando fatura perto do vencimento
+  const urgentes=contasPessoais.filter(c=>{
+    if(c.status==='Pago')return false;
+    const st=fpStatusDia(c);
+    if(c.tipo==='cartao'&&st==='aguardando'){
+      // Alertar se vence em breve mesmo sem valor
+      const hoje=new Date();hoje.setHours(0,0,0,0);
+      const dt=new Date(c.data);dt.setHours(0,0,0,0);
+      const diff=Math.ceil((dt-hoje)/(864e5));
+      return diff<=(c.diasAlerta||3);
+    }
+    return ['vencido','alerta'].includes(st);
+  });
+  const banner=document.getElementById('fp-alerta-banner'),lista2=document.getElementById('fp-alerta-lista');
+  if(banner&&lista2){
+    if(!urgentes.length){banner.classList.remove('visivel');}
+    else{
+      banner.classList.add('visivel');
+      lista2.innerHTML=urgentes.map(c=>{
+        const st=fpStatusDia(c);
+        const icone=st==='vencido'?'&#128308;':'&#128993;';
+        const label=st==='aguardando'?'informe o valor da fatura!':st==='vencido'?'VENCIDA':'vence em breve';
+        const val=c.valor?'R$ '+parseFloat(c.valor).toLocaleString('pt-BR',{minimumFractionDigits:2}):'valor pendente';
+        return '<div class="alerta-item">'+icone+' <strong>'+(c.cartaoNome||c.descricao)+'</strong> — '+val+' — vto '+fromIso(c.data)+' ('+label+')'+
+          (st==='aguardando'?'  <button onclick="abrirModalFatura('+c.id+')" style="margin-left:8px;padding:1px 10px;border-radius:5px;border:1px solid #7e22ce;background:#ede9fe;color:#6d28d9;font-size:11px;cursor:pointer;font-weight:600">Informar valor</button>':'')+
+          '</div>';
+      }).join('');
+    }
+  }
+  // Tabela
+  const tb=document.getElementById('fp-tbody');
+  const sorted=[...listaFiltro].sort((a,b)=>a.data.localeCompare(b.data));
+  if(!sorted.length){tb.innerHTML='<tr><td colspan="9" class="empty">Nenhuma conta. Use os botões acima para adicionar.</td></tr>';return;}
+  tb.innerHTML=sorted.map((c,i)=>{
+    const st=fpStatusDia(c);
+    const rowCls=st==='vencido'?'fin-vencido':st==='alerta'||st==='aguardando'?'fin-alerta':'';
+    const isRec=c.tipo==='receita';
+    const isCartao=c.tipo==='cartao';
+    const aguardando=isCartao&&!c.valor;
+    let badgeCls,badgeLabel;
+    if(c.status==='Pago'){badgeCls='f-pago';badgeLabel=isRec?'Recebido':'Pago';}
+    else if(aguardando){badgeCls='';badgeLabel='<span style="background:#ede9fe;color:#6d28d9;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600">&#9203; Ag. fatura</span>';}
+    else if(st==='vencido'){badgeCls='f-vencido';badgeLabel='Vencida';}
+    else{badgeCls='f-pendente';badgeLabel='Pendente';}
+    let tipoBadge;
+    if(isCartao) tipoBadge='<span style="background:#ede9fe;color:#6d28d9;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600">&#128179; '+(c.cartaoNome||'Cartão')+'</span>';
+    else if(isRec) tipoBadge='<span style="background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600">Entrada</span>';
+    else tipoBadge='<span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600">Despesa</span>';
+    const valorCel=aguardando
+      ?'<button onclick="abrirModalFatura('+c.id+')" style="padding:2px 10px;border-radius:5px;border:1px solid #7e22ce;background:#ede9fe;color:#6d28d9;font-size:11px;cursor:pointer;font-weight:600;white-space:nowrap">+ Informar valor</button>'
+      :'<span style="white-space:nowrap;font-weight:500;color:'+(isRec?'#15803d':'#991b1b')+'">R$ '+parseFloat(c.valor).toLocaleString('pt-BR',{minimumFractionDigits:2})+'</span>';
+    const acoes=(c.status!=='Pago'&&!aguardando?'<button onclick="fpMarcarPago('+c.id+')" title="'+(isRec?'Recebido':'Pago')+'" style="color:#15803d;font-weight:600">&#10003;</button>':'')
+      +'<button onclick="fpEditar('+c.id+')" title="Editar">&#9997;&#65039;</button>'
+      +'<button class="del" onclick="fpExcluir('+c.id+')" title="Excluir">&#215;</button>';
+    return '<tr class="'+rowCls+'">'
+      +'<td style="color:#9ca3af;font-size:12px">'+(i+1)+'</td>'
+      +'<td>'+tipoBadge+'</td>'
+      +'<td style="font-weight:500">'+c.descricao+(c.recorrencia?'<span style="display:inline-block;margin-left:5px;font-size:10px;background:#dbeafe;color:#1e40af;padding:1px 6px;border-radius:10px;font-weight:600">'+c.recorrencia+(c.totalParcelas?' '+(c.parcelaAtual||1)+'/'+c.totalParcelas:'')+'</span>':'')+(c.obs?'<div style="font-size:11px;color:#6b7280;margin-top:2px">'+c.obs+'</div>':'')+'</td>'
+      +'<td>'+valorCel+'</td>'
+      +'<td class="data-cel">'+fromIso(c.data)+'</td>'
+      +'<td style="font-size:12px;color:#6b7280;text-align:center">'+(isRec?'—':(c.diasAlerta||3)+' dias')+'</td>'
+      +'<td style="font-size:12px;color:#6b7280">'+c.categoria+'</td>'
+      +'<td>'+(badgeCls?'<span class="badge '+badgeCls+'">'+badgeLabel+'</span>':badgeLabel)+'</td>'
+      +'<td><div class="acoes">'+acoes+'</div></td>'
+      +'</tr>';
+  }).join('');
+}
+
+function fpFiltrarTipo(tipo){
+  fpFiltroTipo=tipo;
+  ['todas','despesa','receita','cartao'].forEach(t=>{
+    const btn=document.getElementById('fp-tab-'+t);
+    if(!btn)return;
+    const ativo=(t===''&&tipo==='')||(t===tipo);
+    btn.style.background=ativo?'#1a2340':'#fff';
+    btn.style.color=ativo?'#fff':'#374151';
+    btn.style.borderColor=ativo?'#1a2340':'#d1d5db';
+  });
+  renderFinPessoal();
+}
+
+function fpToggleSemValor(checked){
+  const vi=document.getElementById('fpValor');
+  const si=document.getElementById('fpStatusGrupo');
+  vi.disabled=checked;
+  vi.style.opacity=checked?'0.4':'1';
+  vi.style.pointerEvents=checked?'none':'auto';
+  if(checked){vi.value='';si.style.display='none';}
+  else{si.style.display='';}
+}
+
+function abrirModalFP(tipo,id){
+  fpTipoModal=tipo||'despesa';
+  editFPId=id||null;
+  const isRec=fpTipoModal==='receita';
+  const isCart=fpTipoModal==='cartao';
+  document.getElementById('fp-mTitulo').textContent=id?(isCart?'Editar fatura':isRec?'Editar entrada':'Editar conta'):(isCart?'Nova fatura de cartão':isRec?'Nova entrada':'Nova conta pessoal');
+  const badge=document.getElementById('fp-tipo-badge');
+  if(isCart){badge.textContent='&#128179; Fatura de Cartão';badge.style.background='#ede9fe';badge.style.color='#6d28d9';}
+  else if(isRec){badge.textContent='Entrada / Receita';badge.style.background='#dcfce7';badge.style.color='#15803d';}
+  else{badge.textContent='Despesa';badge.style.background='#fee2e2';badge.style.color='#991b1b';}
+  document.getElementById('fpCartaoNomeGrupo').style.display=isCart?'block':'none';
+  document.getElementById('fpDataLabel').textContent=isRec?'Data de recebimento *':'Vencimento *';
+  document.getElementById('fpDiasGrupo').style.display=isRec?'none':'block';
+  document.getElementById('fpSemValorLabel').style.display=isCart?'flex':'none';
+  document.getElementById('fpValorLabel').textContent=isCart?'Valor da fatura (R$)':'Valor (R$) *';
+  document.getElementById('fpStatusGrupo').style.display='block';
+  // Reset sem valor checkbox
+  document.getElementById('fpSemValor').checked=false;
+  fpToggleSemValor(false);
+  if(id){
+    const c=contasPessoais.find(x=>x.id===id);
+    if(c){
+      fpTipoModal=c.tipo;
+      document.getElementById('fpCartaoNome').value=c.cartaoNome||'';
+      document.getElementById('fpDesc').value=c.descricao;
+      document.getElementById('fpValor').value=c.valor||'';
+      document.getElementById('fpData').value=c.data;
+      document.getElementById('fpDias').value=c.diasAlerta||3;
+      document.getElementById('fpCat').value=c.categoria;
+      document.getElementById('fpStatus').value=c.status;
+      document.getElementById('fpRecorr').value=c.recorrencia||'';
+      document.getElementById('fpParcelas').value=c.totalParcelas||'';
+      document.getElementById('fpParcelasGrupo').style.display=c.recorrencia?'block':'none';
+      document.getElementById('fpObs').value=c.obs||'';
+      if(isCart&&!c.valor){document.getElementById('fpSemValor').checked=true;fpToggleSemValor(true);}
+    }
+  } else {
+    document.getElementById('fpCartaoNome').value='';
+    ['fpDesc','fpObs'].forEach(x=>document.getElementById(x).value='');
+    document.getElementById('fpValor').value='';
+    document.getElementById('fpData').value='';
+    document.getElementById('fpDias').value=3;
+    document.getElementById('fpCat').value=isCart?'Cartão de Crédito':isRec?'Salário':'Moradia';
+    document.getElementById('fpStatus').value='Pendente';
+    document.getElementById('fpRecorr').value=isCart?'mensal':'';
+    document.getElementById('fpParcelas').value='';
+    document.getElementById('fpParcelasGrupo').style.display=isCart?'block':'none';
+    if(isCart){document.getElementById('fpSemValor').checked=true;fpToggleSemValor(true);}
+  }
+  document.getElementById('overlayFP').classList.add('open');
+}
+
+function abrirModalFatura(id){
+  const c=contasPessoais.find(x=>x.id===id);
+  if(!c)return;
+  fpFaturaEditId=id;
+  document.getElementById('fpFaturaDesc').textContent='Cartão: '+(c.cartaoNome||c.descricao)+' — Vencimento: '+fromIso(c.data);
+  document.getElementById('fpFaturaValor').value='';
+  document.getElementById('overlayFatura').classList.add('open');
+  setTimeout(()=>document.getElementById('fpFaturaValor').focus(),100);
+}
+function fecharModalFatura(){document.getElementById('overlayFatura').classList.remove('open');}
+function salvarFatura(){
+  const val=document.getElementById('fpFaturaValor').value;
+  if(!val||parseFloat(val)<=0){alert('Informe um valor válido.');return;}
+  const c=contasPessoais.find(x=>x.id===fpFaturaEditId);
+  if(c){c.valor=parseFloat(val);c.status='Pendente';}
+  fecharModalFatura();salvarDados();renderFinPessoal();
+}
+document.getElementById('overlayFatura').addEventListener('click',e=>{if(e.target===document.getElementById('overlayFatura'))fecharModalFatura();});
+
+function fecharModalFP(){document.getElementById('overlayFP').classList.remove('open');}
+function fpToggleParcelas(){document.getElementById('fpParcelasGrupo').style.display=document.getElementById('fpRecorr').value?'block':'none';}
+function fpEditar(id){const c=contasPessoais.find(x=>x.id===id);if(c)abrirModalFP(c.tipo,id);}
+function fpExcluir(id){if(!confirm('Excluir este item?'))return;contasPessoais=contasPessoais.filter(x=>x.id!==id);salvarDados();renderFinPessoal();}
+
+function fpMarcarPago(id){
+  const c=contasPessoais.find(x=>x.id===id);
+  if(!c)return;
+  c.status='Pago';
+  if(c.recorrencia){
+    const prox=(c.parcelaAtual||1)+1;
+    const temLim=c.totalParcelas&&c.totalParcelas>0;
+    if(!temLim||(temLim&&prox<=c.totalParcelas)){
+      const novaData=proximoVencimento(c.data,c.recorrencia);
+      const eUlt=temLim&&prox===c.totalParcelas;
+      // Cartão recorrente: próxima fatura sem valor (aguardando fechar)
+      const novoValor=c.tipo==='cartao'?null:c.valor;
+      contasPessoais.push({id:nextFPId++,tipo:c.tipo,cartaoNome:c.cartaoNome||'',descricao:c.descricao,valor:novoValor,data:novaData,diasAlerta:c.diasAlerta,categoria:c.categoria,status:'Pendente',recorrencia:c.recorrencia,totalParcelas:c.totalParcelas||null,parcelaAtual:prox,obs:c.obs});
+      if(eUlt)setTimeout(()=>alert('Última parcela!\n\n'+c.descricao),100);
+      else{const info=temLim?' ('+prox+'/'+c.totalParcelas+')':'';setTimeout(()=>alert('Ok! Próxima parcela'+info+' criada para '+fromIso(novaData)+(c.tipo==='cartao'?'\n\nLembre de informar o valor quando a fatura fechar.':'')+'.'),100);}
+    } else {setTimeout(()=>alert('Todas as parcelas de "'+c.descricao+'" concluídas!'),100);}
+  }
+  salvarDados();renderFinPessoal();
+}
+
+function salvarFP(){
+  try{
+    const isCart=fpTipoModal==='cartao';
+    const semValor=document.getElementById('fpSemValor').checked;
+    const desc=document.getElementById('fpDesc').value.trim();
+    const cartaoNome=document.getElementById('fpCartaoNome').value.trim();
+    const valor=document.getElementById('fpValor').value;
+    const data=document.getElementById('fpData').value;
+    if(!desc||!data){alert('Preencha a descrição e a data.');return;}
+    if(isCart&&!cartaoNome){alert('Informe o nome do cartão.');return;}
+    if(!semValor&&!valor){alert('Informe o valor.');return;}
+    const totalParc=document.getElementById('fpParcelas').value?parseInt(document.getElementById('fpParcelas').value):null;
+    const obj={
+      tipo:fpTipoModal,
+      cartaoNome:cartaoNome||'',
+      descricao:desc,
+      valor:semValor?null:parseFloat(valor),
+      data:data,
+      diasAlerta:parseInt(document.getElementById('fpDias').value)||3,
+      categoria:document.getElementById('fpCat').value,
+      status:semValor?'Pendente':document.getElementById('fpStatus').value,
+      recorrencia:document.getElementById('fpRecorr').value,
+      totalParcelas:totalParc,
+      parcelaAtual:1,
+      obs:document.getElementById('fpObs').value.trim()
+    };
+    if(editFPId){const i=contasPessoais.findIndex(x=>x.id===editFPId);if(i>=0)contasPessoais[i]={...contasPessoais[i],...obj};}
+    else{contasPessoais.push({id:nextFPId++,...obj});}
+    fecharModalFP();salvarDados();renderFinPessoal();
+  }catch(err){alert('Erro ao salvar: '+err.message);}
+}
+document.getElementById('overlayFP').addEventListener('click',e=>{if(e.target===document.getElementById('overlayFP'))fecharModalFP();});
+
+/* ===== NOTAS ===== */
+function abrirNotas(){trocarSecao('notas');}
+function fecharNotas(){}
+
+// Salvar nota direto no localStorage - simples e direto
+function _salvarNotas(){
+  try{
+    localStorage.setItem('zuriel_notas', JSON.stringify(notas));
+    var t=document.getElementById('notaStatusTag');
+    if(t)t.textContent='✓ Salvo';
+  }catch(e){}
+}
+
+function notaAlterarTexto(val){
+  if(notas && notas[notaAtual]){
+    notas[notaAtual].texto = val;
+    _salvarNotas();
+  }
+}
+
+function notaAlterarTitulo(val){
+  if(notas && notas[notaAtual]){
+    notas[notaAtual].titulo = val || 'Nota '+(notaAtual+1);
+    _salvarNotas();
+    // Atualizar aba sem recarregar textarea
+    _renderNotasTabs();
+  }
+}
+
+function _renderNotasTabs(){
+  var el = document.getElementById('notasTabs');
+  if(!el) return;
+  el.innerHTML = notas.map(function(n,i){
+    var ativo = i===notaAtual;
+    var bg = ativo ? 'background:#fff;border:1px solid #e2e4e8;border-bottom:1px solid #fff;color:#1a2340;margin-bottom:-1px' : 'color:#6b7280;border:1px solid transparent';
+    return '<div style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px 6px 0 0;font-size:12px;font-weight:500;cursor:pointer;'+bg+'" onclick="notaTrocar('+i+')">'
+      + '<span>'+n.titulo.replace(/</g,'&lt;')+'</span>'
+      + (notas.length>1 ? '<span onclick="event.stopPropagation();notaExcluir('+i+')" style="opacity:.4;font-size:11px;padding:0 2px;cursor:pointer" title="Excluir">✕</span>' : '')
+      + '</div>';
+  }).join('') 
+  + '<div onclick="notaNovaAba()" style="display:inline-flex;align-items:center;padding:5px 10px;cursor:pointer;color:#9ca3af;font-size:18px;border-radius:6px 6px 0 0" title="Nova nota">＋</div>';
+}
+
+function _carregarNotaAtual(){
+  var ta = document.getElementById('notaTexto');
+  var ti = document.getElementById('notaTituloInput');
+  if(notas && notas[notaAtual]){
+    if(ta) ta.value = notas[notaAtual].texto || '';
+    if(ti) ti.value = notas[notaAtual].titulo || '';
+  }
+}
+
+function notaTrocar(i){
+  // Salvar atual antes de trocar
+  var ta = document.getElementById('notaTexto');
+  var ti = document.getElementById('notaTituloInput');
+  if(notas && notas[notaAtual]){
+    if(ta) notas[notaAtual].texto = ta.value;
+    if(ti) notas[notaAtual].titulo = ti.value || notas[notaAtual].titulo;
+  }
+  _salvarNotas();
+  notaAtual = i;
+  _renderNotasTabs();
+  _carregarNotaAtual();
+}
+
+function notaNovaAba(){
+  // Salvar atual
+  var ta = document.getElementById('notaTexto');
+  var ti = document.getElementById('notaTituloInput');
+  if(notas && notas[notaAtual]){
+    if(ta) notas[notaAtual].texto = ta.value;
+    if(ti) notas[notaAtual].titulo = ti.value || notas[notaAtual].titulo;
+  }
+  notas.push({titulo:'Nova nota '+(notas.length+1), texto:''});
+  notaAtual = notas.length-1;
+  _salvarNotas();
+  _renderNotasTabs();
+  _carregarNotaAtual();
+  // Focar no título
+  var ti2 = document.getElementById('notaTituloInput');
+  if(ti2){ti2.value='';ti2.focus();}
+}
+
+function notaExcluirAtual(){
+  notaExcluir(notaAtual);
+}
+
+function notaExcluir(i){
+  if(notas.length===1){alert('Mantenha ao menos uma nota.');return;}
+  if(!confirm('Excluir esta nota?'))return;
+  notas.splice(i,1);
+  notaAtual = Math.max(0, notaAtual-1);
+  _salvarNotas();
+  _renderNotasTabs();
+  _carregarNotaAtual();
+}
+
+// Aliases para compatibilidade
+function renderNotasTabs(){_renderNotasTabs();}
+function carregarNotaAtual(){_carregarNotaAtual();}
+function salvarNotaAtual(){
+  var ta=document.getElementById('notaTexto');
+  var ti=document.getElementById('notaTituloInput');
+  if(notas&&notas[notaAtual]){
+    if(ta)notas[notaAtual].texto=ta.value;
+    if(ti)notas[notaAtual].titulo=ti.value||notas[notaAtual].titulo;
+  }
+  _salvarNotas();
+}
+function excluirNotaAtual(){notaExcluirAtual();}
+function novaNotaAba(){notaNovaAba();}
+function trocarNota(i){notaTrocar(i);}
+function editNota(i){notaTrocar(i);}
+function renomearNota(i,nome){if(notas[i])notas[i].titulo=nome;_salvarNotas();_renderNotasTabs();}
+
+/* ===== DEMANDAS ===== */
+function renderStats(){
+  const t=demandas.length,p=demandas.filter(d=>d.status==='Pendente').length,a=demandas.filter(d=>d.status==='Em andamento').length,ok=demandas.filter(d=>d.status==='Concluído').length;
+  document.getElementById('stats').innerHTML=`<div class="stat"><div class="stat-label">Total</div><div class="stat-val total">${t}</div></div><div class="stat"><div class="stat-label">Pendentes</div><div class="stat-val pend">${p}</div></div><div class="stat"><div class="stat-label">Em andamento</div><div class="stat-val and">${a}</div></div><div class="stat"><div class="stat-label">Concluídas</div><div class="stat-val ok">${ok}</div></div><div class="stat"><div class="stat-label">Categorias</div><div class="stat-val total">${categorias.length}</div></div>`;
+}
+function renderTabs(){
+  const prot=['Administrativo'];
+  document.getElementById('tabs').innerHTML=`<button class="tab" style="${catAtiva===''?'background:#1a2340;color:#fff;border-color:#1a2340':'background:#fff;color:#374151;border-color:#d1d5db'}" onclick="filtrarCatTab('')">Todas</button>`+
+    categorias.map(function(nome){var cor=corCat(nome),ativo=catAtiva===nome,bg=ativo?cor.color:cor.bg,cl=ativo?'#fff':cor.color;var ic=prot.indexOf(nome)>=0?'':'<span style="margin-left:6px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();editarCat(\''+nome.replace(/'/g,"\\'")+'\')">&#9998;</span><span style="margin-left:3px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();excluirCat(\''+nome.replace(/'/g,"\\'")+'\')">&#215;</span>';return '<button class="tab" style="background:'+bg+';color:'+cl+';border-color:'+cor.color+';display:inline-flex;align-items:center" onclick="filtrarCatTab(\''+nome.replace(/'/g,"\\'")+'\')">'+nome+ic+'</button>';}).join('');
+}
+function filtrarCatTab(c){catAtiva=c;const sel=document.getElementById('fd-cat');if(sel)sel.value=c;renderTabs();renderTabela();atualizarBtnLimpar();atualizarIndicadores();}
+function syncSelectResp(){const sel=document.getElementById('fd-resp'),v=sel?sel.value:'';const rs=[...new Set(demandas.map(d=>d.resp))].sort();if(sel)sel.innerHTML='<option value="">Todos</option>'+rs.map(r=>`<option ${r===v?'selected':''}>${r}</option>`).join('');}
+function syncSelectCatFiltro(){const sel=document.getElementById('fd-cat'),v=sel?sel.value:'';if(sel)sel.innerHTML='<option value="">Todas</option>'+categorias.map(c=>`<option ${c===v?'selected':''}>${c}</option>`).join('');}
+function syncSelectCatModal(){const sel=document.getElementById('fCat');if(!sel)return;const v=sel.value;sel.innerHTML=categorias.map(c=>`<option ${c===v?'selected':''}>${c}</option>`).join('');}
+function syncAll(){syncSelectResp();syncSelectCatFiltro();syncSelectCatModal();}
+function limparFiltros(){catAtiva='';['fd-demanda','fd-obs'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});['fd-resp','fd-cat','fd-prio','fd-status','fd-entrada-de','fd-entrada-ate','fd-conclusao-de','fd-conclusao-ate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});selecionadas.clear();document.getElementById('barraLote').classList.remove('visivel');const chk=document.getElementById('chkTodos');if(chk)chk.checked=false;sortCol='';sortDir=1;document.querySelectorAll('.sort-icon').forEach(el=>el.textContent='');drops.forEach(d=>{const th=document.getElementById('th-'+d);if(th)th.classList.remove('filtrado');});renderTabs();renderTabela();atualizarBtnLimpar();}
+function atualizarBtnLimpar(){const ids=['fd-demanda','fd-resp','fd-cat','fd-prio','fd-status','fd-entrada-de','fd-entrada-ate','fd-conclusao-de','fd-conclusao-ate','fd-obs'];const ativo=catAtiva||ids.some(id=>{const el=document.getElementById(id);return el&&el.value;});document.getElementById('btnLimpar').style.display=ativo?'inline-block':'none';}
+function ordenarPor(col){if(sortCol===col)sortDir*=-1;else{sortCol=col;sortDir=1;}document.querySelectorAll('.sort-icon').forEach(el=>el.textContent='');const el=document.getElementById('si-'+col);if(el)el.textContent=sortDir===1?'▲':'▼';renderTabela();}
+function renderTabela(){
+  const b=gv('fd-demanda').toLowerCase(),fR=gv('fd-resp'),fC=gv('fd-cat')||catAtiva,fP=gv('fd-prio'),fS=gv('fd-status');
+  const fEDe=gv('fd-entrada-de'),fEAte=gv('fd-entrada-ate'),fCDe=gv('fd-conclusao-de'),fCAte=gv('fd-conclusao-ate'),fObs=gv('fd-obs').toLowerCase();
+  let lista=demandas.filter(d=>{
+    if(fC&&d.cat!==fC)return false;if(fR&&d.resp!==fR)return false;if(fP&&d.prio!==fP)return false;if(fS&&d.status!==fS)return false;
+    if(b&&!d.demanda.toLowerCase().includes(b))return false;if(fObs&&!(d.obs||'').toLowerCase().includes(fObs))return false;
+    if(fEDe&&toIso(d.entrada)<fEDe)return false;if(fEAte&&toIso(d.entrada)>fEAte)return false;
+    if(fCDe&&(!d.conclusao||toIso(d.conclusao)<fCDe))return false;if(fCAte&&(!d.conclusao||toIso(d.conclusao)>fCAte))return false;
+    return true;
+  });
+  function ordemGeral(d){if(d.status==='Cancelado')return 4;if(d.status==='Concluído')return 3;return prioNum(d.prio);}
+  if(sortCol){lista.sort((a,b)=>{let va,vb;if(sortCol==='idx'){va=demandas.indexOf(a);vb=demandas.indexOf(b);}else if(sortCol==='prio'){va=prioNum(a.prio);vb=prioNum(b.prio);}else if(sortCol==='entrada'||sortCol==='conclusao'){va=toIso(a[sortCol])||'';vb=toIso(b[sortCol])||'';}else{va=(a[sortCol]||'').toLowerCase();vb=(b[sortCol]||'').toLowerCase();}return va<vb?-sortDir:va>vb?sortDir:0;});}
+  else{lista.sort((a,b)=>ordemGeral(a)-ordemGeral(b));}
+  const tb=document.getElementById('tbody');
+  if(!lista.length){tb.innerHTML=`<tr><td colspan="12" class="empty">Nenhuma demanda encontrada</td></tr>`;return;}
+  tb.innerHTML=lista.map((d,i)=>{
+    const sc=d.status==='Em andamento'?'s-andamento':d.status==='Concluído'?'s-concluido':d.status==='Cancelado'?'s-cancelado':'s-pendente';
+    const pc=d.prio==='Alta'?'p-alta':d.prio==='Baixa'?'p-baixa':'p-media';
+    const cor=corCat(d.cat),sel=selecionadas.has(d.id),fim=statusFim(d.status);
+    const obsHtml=(d.obs||'').replace(/\n/g,'<br>');
+    return `<tr draggable="true" data-id="${d.id}" ondblclick="editar(${d.id})" class="${sel?'selecionada':''}${fim?' row-fim':''}">
+      <td style="text-align:center"><input type="checkbox" ${sel?'checked':''} onclick="toggleSel(${d.id},this)" data-id="${d.id}"></td>
+      <td style="color:#d1d5db;font-size:18px;cursor:grab;user-select:none;text-align:center" title="Arrastar">⠿</td>
+      <td style="color:#9ca3af;font-size:12px">${i+1}</td>
+      <td style="max-width:220px;font-weight:500">${d.demanda}</td>
+      <td style="white-space:nowrap">${d.resp}</td>
+      <td><span class="badge" style="background:${cor.bg};color:${cor.color}">${d.cat}</span></td>
+      <td><span class="badge ${pc}">${d.prio}</span></td>
+      <td><span class="badge ${sc}">${d.status}</span></td>
+      <td class="data-cel">${d.entrada||'—'}</td>
+      <td class="data-conclusao">${d.conclusao||'—'}</td>
+      <td>${(()=>{if(!d.prazo)return '<span style="color:#d1d5db">—</span>';const hoje=new Date();hoje.setHours(0,0,0,0);const pdt=new Date(d.prazo);pdt.setHours(0,0,0,0);const diff=Math.ceil((pdt-hoje)/86400000);const pts=d.prazo.split('-');const fmt=pts[2]+'/'+pts[1]+'/'+pts[0];if(d.status==='Concluído'||d.status==='Cancelado')return '<span class="data-cel">'+fmt+'</span>';if(diff<0)return '<span style="font-size:11px;font-weight:600;color:#dc2626">⚠ '+fmt+'</span>';if(diff<=(d.prazoDias||1))return '<span style="font-size:11px;font-weight:600;color:#d97706">⏰ '+fmt+'</span>';return '<span class="data-cel">'+fmt+'</span>';})()}</td>
+      <td style="max-width:200px;color:#6b7280;font-size:12px">${obsHtml||'—'}</td>
+      <td><div class="acoes"><button onclick="editar(${d.id})" title="Editar">✏️</button><button class="del" onclick="excluir(${d.id})" title="Excluir">✕</button></div></td>
+    </tr>`;
+  }).join('');
+  document.querySelectorAll('#tbody tr[draggable]').forEach(tr=>{
+    tr.addEventListener('dragstart',e=>{dragId=parseInt(tr.dataset.id);setTimeout(()=>tr.style.opacity='0.35',0);e.dataTransfer.effectAllowed='move';});
+    tr.addEventListener('dragend',()=>{tr.style.opacity='1';document.querySelectorAll('#tbody tr').forEach(r=>r.classList.remove('drag-over'));});
+    tr.addEventListener('dragover',e=>{e.preventDefault();document.querySelectorAll('#tbody tr').forEach(r=>r.classList.remove('drag-over'));tr.classList.add('drag-over');});
+    tr.addEventListener('drop',e=>{e.preventDefault();const tid=parseInt(tr.dataset.id);if(!dragId||dragId===tid)return;const fi=demandas.findIndex(d=>d.id===dragId),ti=demandas.findIndex(d=>d.id===tid);const[m]=demandas.splice(fi,1);demandas.splice(ti,0,m);salvarDados();renderTabela();});
+  });
+}
+function toggleSel(id,cb){if(cb.checked)selecionadas.add(id);else selecionadas.delete(id);atualizarBarra();const tr=cb.closest('tr');if(tr)tr.classList.toggle('selecionada',cb.checked);}
+function toggleTodos(cb){document.querySelectorAll('#tbody input[type=checkbox]').forEach(c=>{const id=parseInt(c.dataset.id);c.checked=cb.checked;if(cb.checked)selecionadas.add(id);else selecionadas.delete(id);const tr=c.closest('tr');if(tr)tr.classList.toggle('selecionada',cb.checked);});atualizarBarra();}
+function atualizarBarra(){const n=selecionadas.size;document.getElementById('lblSelecionadas').textContent=n+' selecionada'+(n!==1?'s':'');document.getElementById('barraLote').classList.toggle('visivel',n>0);atualizarCampoLote();}
+function atualizarCampoLote(){const v=document.getElementById('loteCampo').value;const sel=document.getElementById('loteValorSelect'),inp=document.getElementById('loteValorInput');sel.style.display='none';inp.style.display='none';if(v==='cat'){sel.innerHTML=categorias.map(c=>`<option>${c}</option>`).join('');sel.style.display='block';}else if(v==='status'){sel.innerHTML=['Pendente','Em andamento','Concluído','Cancelado'].map(s=>`<option>${s}</option>`).join('');sel.style.display='block';}else if(v==='prio'){sel.innerHTML=['Alta','Média','Baixa'].map(s=>`<option>${s}</option>`).join('');sel.style.display='block';}else if(v==='resp'){inp.style.display='block';}}
+function aplicarLote(){const campo=document.getElementById('loteCampo').value;if(!campo){alert('Escolha o campo.');return;}const sel=document.getElementById('loteValorSelect'),inp=document.getElementById('loteValorInput');const valor=sel.style.display!=='none'?sel.value:inp.value.trim();if(!valor){alert('Informe o valor.');return;}demandas.forEach(d=>{if(selecionadas.has(d.id)){d[campo]=valor;if(campo==='status'&&valor==='Concluído'&&!d.conclusao)d.conclusao=dataHoje();if(campo==='status'&&valor!=='Concluído')d.conclusao='';}});cancelarLote();salvarDados();renderStats();renderTabela();}
+function cancelarLote(){selecionadas.clear();document.getElementById('barraLote').classList.remove('visivel');const chk=document.getElementById('chkTodos');if(chk)chk.checked=false;renderTabela();}
+function abrirModal(id){editId=id||null;syncSelectCatModal();document.getElementById('mTitulo').textContent=id?'Editar demanda':'Nova demanda';if(id){const d=demandas.find(x=>x.id===id);document.getElementById('fDemanda').value=d.demanda;document.getElementById('fResp').value=d.resp;document.getElementById('fCat').value=d.cat;document.getElementById('fPrio').value=d.prio;document.getElementById('fStatus').value=d.status;document.getElementById('fObs').value=d.obs||'';document.getElementById('fPrazo').value=d.prazo||'';document.getElementById('fPrazoDias').value=d.prazoDias||1;}else{['fDemanda','fObs'].forEach(x=>document.getElementById(x).value='');document.getElementById('fResp').value='Tati';document.getElementById('fCat').value='Administrativo';document.getElementById('fPrio').value='Alta';document.getElementById('fStatus').value='Pendente';document.getElementById('fPrazo').value='';document.getElementById('fPrazoDias').value=1;}document.getElementById('overlay').classList.add('open');}
+function fecharModal(){document.getElementById('overlay').classList.remove('open')}
+function editar(id){abrirModal(id)}
+function excluir(id){if(!confirm('Excluir esta demanda?'))return;demandas=demandas.filter(x=>x.id!==id);salvarDados();syncSelectResp();renderStats();renderTabela();}
+function salvar(){const dem=document.getElementById('fDemanda').value.trim(),resp=document.getElementById('fResp').value.trim();if(!dem||!resp){alert('Preencha a demanda e o responsável.');return;}const novoStatus=document.getElementById('fStatus').value;if(editId){const i=demandas.findIndex(x=>x.id===editId),ant=demandas[i].status;demandas[i]={...demandas[i],demanda:dem,resp,cat:document.getElementById('fCat').value,prio:document.getElementById('fPrio').value,status:novoStatus,obs:document.getElementById('fObs').value.trim(),prazo:document.getElementById('fPrazo').value,prazoDias:parseInt(document.getElementById('fPrazoDias').value)||1};if(novoStatus==='Concluído'&&ant!=='Concluído')demandas[i].conclusao=dataHoje();if(novoStatus!=='Concluído'&&ant==='Concluído')demandas[i].conclusao='';}else{demandas.unshift({id:nextId++,demanda:dem,resp,cat:document.getElementById('fCat').value,prio:document.getElementById('fPrio').value,status:novoStatus,obs:document.getElementById('fObs').value.trim(),prazo:document.getElementById('fPrazo').value,prazoDias:parseInt(document.getElementById('fPrazoDias').value)||1,entrada:dataHoje(),conclusao:novoStatus==='Concluído'?dataHoje():''});}fecharModal();salvarDados();syncAll();renderStats();renderTabela();}
+document.getElementById('overlay').addEventListener('click',e=>{if(e.target===document.getElementById('overlay'))fecharModal()});
+document.getElementById('loteCampo').addEventListener('change',atualizarCampoLote);
+function abrirModalCat(){editCatNome=null;document.getElementById('fNomeCat').value='';document.getElementById('tituloCat').textContent='Nova Categoria';document.getElementById('btnSalvarCat').textContent='Adicionar';document.getElementById('descCat').textContent='Ficará disponível em todas as demandas.';document.getElementById('overlayCat').classList.add('open');setTimeout(()=>document.getElementById('fNomeCat').focus(),100);}
+function editarCat(nome){editCatNome=nome;document.getElementById('fNomeCat').value=nome;document.getElementById('tituloCat').textContent='Renomear Categoria';document.getElementById('btnSalvarCat').textContent='Salvar';document.getElementById('descCat').textContent='O novo nome será aplicado em todas as demandas.';document.getElementById('overlayCat').classList.add('open');setTimeout(()=>document.getElementById('fNomeCat').focus(),100);}
+function excluirCat(nome){const qtd=demandas.filter(d=>d.cat===nome).length;if(!confirm(`Excluir "${nome}"?${qtd>0?' As '+qtd+' demanda(s) vão para Administrativo.':''}`))return;demandas.forEach(d=>{if(d.cat===nome)d.cat='Administrativo';});categorias=categorias.filter(c=>c!==nome);if(catAtiva===nome)catAtiva='';salvarDados();renderStats();renderTabs();syncAll();renderTabela();}
+function fecharModalCat(){document.getElementById('overlayCat').classList.remove('open')}
+function salvarCat(){const nome=document.getElementById('fNomeCat').value.trim();if(!nome){alert('Digite o nome.');return;}if(editCatNome){if(nome.toLowerCase()!==editCatNome.toLowerCase()&&categorias.find(c=>c.toLowerCase()===nome.toLowerCase())){alert('Já existe.');return;}demandas.forEach(d=>{if(d.cat===editCatNome)d.cat=nome;});categorias[categorias.indexOf(editCatNome)]=nome;if(catAtiva===editCatNome)catAtiva=nome;}else{if(categorias.find(c=>c.toLowerCase()===nome.toLowerCase())){alert('Já existe.');return;}categorias.push(nome);}fecharModalCat();salvarDados();renderStats();renderTabs();syncAll();renderTabela();}
+document.getElementById('overlayCat').addEventListener('click',e=>{if(e.target===document.getElementById('overlayCat'))fecharModalCat()});
+function exportarCSV(){const h=['#','Demanda','Responsável','Categoria','Prioridade','Status','Entrada','Conclusão','Observações'];const r=demandas.map((d,i)=>[i+1,`"${d.demanda.replace(/"/g,'""')}"`,d.resp,d.cat,d.prio,d.status,d.entrada||'',d.conclusao||'',`"${(d.obs||'').replace(/"/g,'""').replace(/\n/g,' ')}"`]);const csv=[h,...r].map(x=>x.join(',')).join('\n');const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);a.download='demandas_zuriel.csv';a.click();}
+function salvarHTML(){
+  try{
+    // Salvar texto atual da nota antes de serializar
+    const taAtual=document.getElementById('notaTexto');
+    if(taAtual&&notas[notaAtual])notas[notaAtual].texto=taAtual.value;
+    const hoje=new Date().toLocaleDateString('pt-BR').replace(/\//g,'-');
+    const dados={
+      demandas:JSON.stringify(demandas),
+      categorias:JSON.stringify(categorias),
+      nextId:String(nextId),
+      notas:JSON.stringify(notas),
+      financeiro:JSON.stringify({contas:(typeof contas!=='undefined'?contas:[]),diasAlarme:(typeof diasAlarmeGlobal!=='undefined'?diasAlarmeGlobal:3),nextId:(typeof nextContaId!=='undefined'?nextContaId:1)}),
+      finpessoal:JSON.stringify({contas:(typeof contasPessoais!=='undefined'?contasPessoais:[]),nextId:(typeof nextFPId!=='undefined'?nextFPId:200)})
+    };
+    const scriptConteudo=[
+      '(function(){',
+      'try{',
+      'localStorage.setItem("zuriel_demandas",'+JSON.stringify(dados.demandas)+');',
+      'localStorage.setItem("zuriel_categorias",'+JSON.stringify(dados.categorias)+');',
+      'localStorage.setItem("zuriel_nextid",'+JSON.stringify(dados.nextId)+');',
+      'var _ns=localStorage.getItem("zuriel_notas");',
+      'var _nt=false;',
+      'if(_ns){try{var _na=JSON.parse(_ns);_nt=_na.some(function(x){return x.texto&&x.texto.trim().length>0;});}catch(e){}}',
+      'if(!_nt){localStorage.setItem("zuriel_notas",'+JSON.stringify(dados.notas)+');}',
+      'localStorage.setItem("zuriel_financeiro",'+JSON.stringify(dados.financeiro)+');',
+      'if(!localStorage.getItem("zuriel_finpessoal")||localStorage.getItem("zuriel_finpessoal")==="{}"){localStorage.setItem("zuriel_finpessoal",'+JSON.stringify(dados.finpessoal)+');}',
+      '}catch(e){}',
+      '})();'
+    ].join('');
+    const tag='scr'+'ipt';
+    const script='<'+tag+' id="__ds__">'+scriptConteudo+'</'+tag+'>';
+    let html=document.documentElement.outerHTML;
+    html=html.replace(new RegExp('<'+tag+' id="__ds__">[\\s\\S]*?</'+tag+'>','g'),'');
+    html=html.replace('</head>',script+'</head>');
+    const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='painel_zuriel_'+hoje+'.html';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+    const t=document.getElementById('salvoTag');
+    if(t){t.textContent='💾 HTML salvo!';setTimeout(()=>t.textContent='✓ Salvo',2500);}
+  }catch(err){alert('Erro ao salvar: '+err.message);}
+}
+
+function renderAll(){syncAll();renderStats();renderTabs();renderTabela();verificarAlertas();}
+carregarDados();
+renderAll();
+setTimeout(()=>{if(typeof Notification!=='undefined'&&Notification.permission==='granted')verificarAlertas();},1500);
+</script>
+</body></html>
